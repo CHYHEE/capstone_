@@ -3,6 +3,7 @@ import { Modal, Button, Form } from 'react-bootstrap'; // 이 부분은 react-bo
 import { useNavigate } from 'react-router-dom'; // 사용하는 라우터에 맞게 수정되어야 합니다.
 import * as auth from '../../api/auth';
 import * as Swal from '../../api/alert';
+import '../Login/LoginForm.css'
 
 
 function Find() {
@@ -64,11 +65,10 @@ function Find() {
                     <Modal.Title>비밀번호 찾기</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form className='label-input-container'>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
-                                as="textarea"
                                 rows={1}
                                 value={name}
                                 onChange={(e) => {
@@ -110,7 +110,6 @@ function Find() {
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
-                                as="textarea"
                                 rows={1}
                                 value={name}
                                 onChange={(e) => {
