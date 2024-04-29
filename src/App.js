@@ -5,9 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import LoginContextProvider from "./context/LoginContextProvider";
 import Home from './page/Home';
-import Join from './page/Join';
 import Login from './page/Login';
 import Chat from './page/Chat';
+import Mypage from "./page/Mypage";
+import MbtiTest from "./page/MbtiTest";
 
 const App = () => {
   return (
@@ -16,6 +17,8 @@ const App = () => {
           <Routes>                   {/* 어떤 컴포넌트를 렌더링할지 결정하는 역할 */}
             <Route path="/home" element={<Home/>}/>
             <Route path="/" element={<Login/>}/>
+            <Route path="/mypage" element={<Mypage/>}/>
+            <Route path="/mbtitest" element={<MbtiTest/>}/>
           </Routes>
         </LoginContextProvider>
       </BrowserRouter>
