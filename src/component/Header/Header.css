@@ -42,11 +42,19 @@ header {
 
 .logo {
     margin-right: auto;
-    width: 250px;
+    width: 430px;
+    height: 150px;
+    margin-top: 30px;
 }
 
 .util ul{
     display: flex;
     align-items: center;
     column-gap: 12px;
+}
+
+.li {
+    font-size: 20px;
+    margin-top: 60px;
+    font-weight: bold;
 }

@@ -30,7 +30,7 @@ export const LoginContextProvider = ({ children }) => {
     let data
 
     if(isAuthPage ) {
-      navigate("/")
+      navigate("/login")
     }
     try {
       response = await auth.info()

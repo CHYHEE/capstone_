@@ -15,8 +15,8 @@ const App = () => {
       <BrowserRouter>                {/* URL 관리, 브라우저의 주소를 처리 */}
         <LoginContextProvider>       {/* 로그인 관리 */}
           <Routes>                   {/* 어떤 컴포넌트를 렌더링할지 결정하는 역할 */}
-            <Route path="/home" element={<Home/>}/>
-            <Route path="/" element={<Login/>}/>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/login" element={<Login/>}/>
             <Route path="/mypage" element={<Mypage/>}/>
             <Route path="/mbtitest" element={<MbtiTest/>}/>
           </Routes>

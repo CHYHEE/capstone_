@@ -13,9 +13,13 @@ const Header = () =>{
 
     const handleClick = () => {
         Swal.alert("로그인이 필요합니다", "로그인 화면으로 이동합니다.", "warning", () => {
-            navigate("/");
+            navigate("/login");
         });
     };
+
+    const handleLogin = () => {
+        navigate("/login");
+    }
 
     return (
         <header>
@@ -25,21 +29,15 @@ const Header = () =>{
                 </Link>
 
             </div>
-            <div className="util">
+            <div>
                 <ul className="menu-list">
                     {/* 로그인 여부에 따라 조건부 랜더링입니다 */}
                     { !isLogin ?
-                        <>
-                            <Link to="/">
+                        <div className='li'>
+                            <label onClick={handleLogin}>
                                 <li>로그인</li>
-                            </Link>
-                            {/*<label onClick={handleClick}>*/}
-                            {/*    <li>마이페이지</li>*/}
-                            {/*</label>*/}
-                            <Link to ="/mbtitest">
-                                <li>MBTI 검사</li>
-                            </Link>
-                        </>
+                            </label>
+                        </div>
                         :
                         <>
                             <Link to ="/mypage">

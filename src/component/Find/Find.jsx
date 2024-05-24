@@ -25,7 +25,7 @@ function Find() {
             console.log(`data : ${response.data}`);
             console.log(`status : ${response.status}`);
 
-            Swal.alert("비밀번호 찾기 성공", "Password:"+response.data , "success", () => { navigate("/") })
+            Swal.alert("비밀번호 찾기 성공", "Password:"+response.data , "success", () => { navigate("/login") })
 
         } catch (err) {
             console.log(err);
@@ -43,7 +43,7 @@ function Find() {
             loginId= response.data;
             console.log(`loginid : ${loginId}`);
 
-            Swal.alert("아이디 찾기 성공", "ID:"+loginId , "success", () => { navigate("/") })
+            Swal.alert("아이디 찾기 성공", "ID:"+loginId , "success", () => { navigate("/login") })
 
         } catch {
             console.log('error');
