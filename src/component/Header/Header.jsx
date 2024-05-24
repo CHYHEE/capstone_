@@ -17,24 +17,25 @@ const Header = () =>{
         });
     };
 
-    const handleLogin = () => {
-        navigate("/login");
-    }
 
     return (
         <header>
             <div className="logo">
-                <Link to="/home">
-                    <img src="/img/logo.png" alt="logo" className='logo'/>
-                </Link>
-
+            <Link to="/">
+                <img src="/img/logo.png" alt="logo" className='logo'/>
+            </Link>
+            <div className="label-container">
+                <label onClick={() => navigate("/introduction")}>소개</label>
+                <label onClick={() => navigate("/mbtitest")}>MBTI 테스트</label>
+                <label onClick={() => navigate("/matching")}>매칭</label>
             </div>
+        </div>
             <div>
                 <ul className="menu-list">
                     {/* 로그인 여부에 따라 조건부 랜더링입니다 */}
                     { !isLogin ?
-                        <div className='li'>
-                            <label onClick={handleLogin}>
+                        <div className='label-container'>
+                            <label onClick={() => navigate("/login")}>
                                 <li>로그인</li>
                             </label>
                         </div>
@@ -44,7 +45,7 @@ const Header = () =>{
                                 <li>마이페이지</li>
                             </Link>
                             <li className="font">
-                                <span>
+                                <span onClick={()=>navigate("/mypage")}>
                                     <IoPersonSharp style={{fontSize: '17px'}}/>
                                     {userInfo.userId}
                                 </span>님 환영합니다.

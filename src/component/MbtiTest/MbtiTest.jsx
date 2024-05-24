@@ -1,12 +1,13 @@
 import React from 'react'
-import Header from '../component/Header/Header'
 import {useState} from "react";
-import {questionsMBTI, options} from "../component/MbtiTest/TestForm"
-
+import {questionsMBTI, options} from "./TestForm"
+import './MbtiTest.css'
+import { style } from 'dom-helpers';
 
 const Question = ({question, options, onAnswer}) => {
     // 답, 선택지 상태변수 관리
     const [selectedOption, setSelectedOption] = useState('');
+
 
     // 다음 문제로 넘어가는 함수
     const handleNextQuestion = () => {
@@ -21,27 +22,32 @@ const Question = ({question, options, onAnswer}) => {
         setSelectedOption(e.target.value)
     }
 
+    const handleOptionClick = (option) => {
+        setSelectedOption(option);
+    };
+
     return (
         <>
-            <div>
-                <h2>{question.question}</h2>
+            <div className='form'>
+                <h2 className='h2'>{question.question}</h2>
                 <form>
                     {options.map((option) => (
                         <div key={option}>
                             <label>
                                 <input
-                                    type="radio"
+                                    type="button"
                                     name="option"
                                     value={option}
                                     checked={selectedOption === option}
                                     onChange={handleOptionChange}
+                                    className="input"
+                                    onClick={() => handleOptionClick(option)}
                                 />
-                                {option}
                             </label>
                         </div>
                     ))}
                 </form><br/><br/>
-                <button onClick={handleNextQuestion}>Next</button>
+                <button className='btn' onClick={handleNextQuestion}>Next</button>
             </div>
         </>
     );
@@ -95,7 +101,6 @@ const MbtiTest = () => {
 
     return (
         <>
-            <Header />
             <div>
                 {index <questionsMBTI.length?
                 <Question

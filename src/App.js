@@ -8,7 +8,9 @@ import Home from './page/Home';
 import Login from './page/Login';
 import Chat from './page/Chat';
 import Mypage from "./page/Mypage";
-import MbtiTest from "./page/MbtiTest";
+import Introduction from "./page/Introduction";
+import Matching from "./page/Matching";
+import MbtiTestPage from "./page/MbtiTestPage";
 
 const App = () => {
   return (
@@ -18,7 +20,10 @@ const App = () => {
             <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/mypage" element={<Mypage/>}/>
-            <Route path="/mbtitest" element={<MbtiTest/>}/>
+            <Route path="/mbtitest" element={<MbtiTestPage/>}/>
+            <Route path="/introduction" element={<Introduction/>}/>
+            <Route path="/chat" element={<Chat/>}/>
+            <Route path="/matching" element={<Matching/>}/>
           </Routes>
         </LoginContextProvider>
       </BrowserRouter>

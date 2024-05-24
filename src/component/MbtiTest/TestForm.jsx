@@ -1,7 +1,6 @@
-
     const options = [
         {
-            options: ['그렇다.', '아니다.'],
+            options: ['그렇다', '아니다'],
         },
     ];
 

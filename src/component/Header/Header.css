@@ -25,11 +25,7 @@ header {
 
 .menu-list {
     list-style: none;  /* 리스트 스타일 제거 */
-    padding: 0;        /* 내부 간격 제거 */
-    margin: 0;         /* 외부 여백 제거 */
-    display: flex;
-    align-items: center;
-    column-gap: 12px;
+    margin-top: 45px;
 }
 
 .menu-list li {
@@ -41,20 +37,47 @@ header {
 }
 
 .logo {
-    margin-right: auto;
     width: 430px;
     height: 150px;
     margin-top: 30px;
+    background-size: cover; /* 이미지 크기 조절 */
+    background-position: center; /* 이미지 위치 조절 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 이미지와 레이블 사이 간격 조절 */
 }
+
+.logo img {
+    width: 430px;
+    height: 150px;
+}   
+
+.label-container {
+    display: flex;
+    gap: 20px; /* 레이블 사이 간격 조절 */
+}
+
+.label-container label {
+    margin-left: 30px;
+    white-space: nowrap; /* 텍스트가 길어도 한 줄에 표시되도록 설정 */
+    color: #ED648B  ;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
 .util ul{
     display: flex;
     align-items: center;
     column-gap: 12px;
+    cursor: pointer;
 }
 
 .li {
     font-size: 20px;
     margin-top: 60px;
     font-weight: bold;
+    cursor: pointer;
 }

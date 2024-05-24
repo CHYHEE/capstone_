@@ -1,16 +1,16 @@
 import React from 'react';
 import Header from "../component/Header/Header";
-import HomeForm from '../component/Home/HomeForm';
+import MbtiTest from '../component/MbtiTest/MbtiTest';
 
-const Home = () => {
+const MbtiTestPage = () => {
     return (
         <>
             <Header/>
             <div className='container'>
-                <HomeForm/>
+                <MbtiTest/>
             </div>
         </>
     );
 }
 
-export default Home;
+export default MbtiTestPage;
