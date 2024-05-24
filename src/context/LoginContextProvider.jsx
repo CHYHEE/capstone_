@@ -1,13 +1,13 @@
 import Cookies from 'js-cookie';
-import React, { useEffect, useState } from 'react';
+import React, {createContext, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Swal from '../api/alert';
 import * as auth from '../api/auth';
 
-export const LoginContext = React.createContext();
+export const LoginContext = createContext();
 LoginContext.displayName = 'LoginContextName'
 
-const LoginContextProvider = ({ children }) => {
+export const LoginContextProvider = ({ children }) => {
 
   // 페이지 이동
   const navigate = useNavigate()
@@ -63,7 +63,6 @@ const LoginContextProvider = ({ children }) => {
    * 🔐 로그인
    */
   const login = async (loginId, password, rememberId) => {
-
     console.log(`username : ${loginId}`);
     console.log(`password : ${password}`);
 
@@ -95,7 +94,6 @@ const LoginContextProvider = ({ children }) => {
    * 🔓 로그아웃
    */
   const logout = (force=false) => {
-
     // comfirm 없이 강제 로그아웃
     if( force ) {
       // 로그아웃 세팅
@@ -152,6 +150,7 @@ const LoginContextProvider = ({ children }) => {
     //loginCheck()
 
   }, []);
+
 
   return (
       <LoginContext.Provider value={ {isLogin, userInfo, loginCheck, login, logout } }>

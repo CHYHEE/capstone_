@@ -23,6 +23,7 @@ const Header = () =>{
                 <Link to="/home">
                     <img src="/img/logo.png" alt="logo" className='logo'/>
                 </Link>
+
             </div>
             <div className="util">
                 <ul className="menu-list">
@@ -32,9 +33,9 @@ const Header = () =>{
                             <Link to="/">
                                 <li>로그인</li>
                             </Link>
-                            <label onClick={handleClick}>
-                                <li>마이페이지</li>
-                            </label>
+                            {/*<label onClick={handleClick}>*/}
+                            {/*    <li>마이페이지</li>*/}
+                            {/*</label>*/}
                             <Link to ="/mbtitest">
                                 <li>MBTI 검사</li>
                             </Link>

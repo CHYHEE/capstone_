@@ -33,6 +33,8 @@ const LoginForm = () => {
         const phone = e.target.phone.value
 
         join(id, password, confirmPassword, mbti, username, date, phone)
+        const user = { id, password, confirmPassword, mbti, username, date, phone };
+        login(user);
     }
 
     const onLogin = (e) => {
@@ -49,7 +51,7 @@ const LoginForm = () => {
         const date = document.getElementById('date').value;
         const phone = document.getElementById('phone').value;
         const mbti = document.getElementById('mbti').value;
-        const id = document.getElementById('id').value
+        const id = document.getElementById('id').value;
 
         if (id === ''){
             alert('아이디를 입력해주세요.');

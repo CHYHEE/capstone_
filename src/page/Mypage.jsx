@@ -1,17 +1,12 @@
 // MyPage.jsx
 
-import React from 'react'
+import React, {useContext} from 'react'
 import Header from '../component/Header/Header'
+import {LoginContext} from "../context/LoginContextProvider";
 
 
-const MyPage = () => {
-    // 사용자 정보를 하드코딩된 상태로 가정
-    const userInfo = {
-        name: 'John Doe',
-        email: 'john@example.com',
-        location: 'City, Country',
-        profileImage: 'KakaoTalk_20240411_155801141.jpg' // 프로필 이미지 경로
-    };
+const MyPage = (props) => {
+    const {userInfo} = useContext(LoginContext);
 
     return (
         <div className="my-page">
@@ -20,11 +15,12 @@ const MyPage = () => {
             </header>
             <div className="container">
                 <div className="profile">
-                    <img className="profile-picture" src="/img/KakaoTalk_20240411_155801141.jpg" alt="Profile Picture" />
+                    <img className="profile-picture" src="/img/프로필.webp" alt="Profile Picture" />
                     <div className="profile-info">
-                        <h2 className="profile-name">{userInfo.name}</h2>
-                        <p className="profile-detail">Email: {userInfo.email}</p>
-                        <p className="profile-detail">Location: {userInfo.location}</p>
+                        <h2>{userInfo.username}</h2>
+                        <p className="profile-detail">ID: {userInfo.id}</p>
+                        <p className="profile-detail">Phone: {userInfo.phone}</p>
+                        <p className="profile-detail">MBTI: {userInfo.mbti}</p>
                     </div>
                 </div>
                 <div className="content">
