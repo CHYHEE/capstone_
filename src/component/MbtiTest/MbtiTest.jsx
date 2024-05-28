@@ -2,7 +2,9 @@ import React from 'react'
 import {useState} from "react";
 import {questionsMBTI, options} from "./TestForm"
 import './MbtiTest.css'
-import { style } from 'dom-helpers';
+import * as Swal from '../../api/alert';
+import { useNavigate } from 'react-router-dom';
+
 
 const Question = ({question, options, onAnswer}) => {
     // 답, 선택지 상태변수 관리
@@ -22,10 +24,6 @@ const Question = ({question, options, onAnswer}) => {
         setSelectedOption(e.target.value)
     }
 
-    const handleOptionClick = (option) => {
-        setSelectedOption(option);
-    };
-
     return (
         <>
             <div className='form'>
@@ -41,13 +39,12 @@ const Question = ({question, options, onAnswer}) => {
                                     checked={selectedOption === option}
                                     onChange={handleOptionChange}
                                     className="input"
-                                    onClick={() => handleOptionClick(option)}
+                                    onClick={handleNextQuestion}
                                 />
                             </label>
                         </div>
                     ))}
-                </form><br/><br/>
-                <button className='btn' onClick={handleNextQuestion}>Next</button>
+                </form>
             </div>
         </>
     );
@@ -56,6 +53,7 @@ const Question = ({question, options, onAnswer}) => {
 const MbtiTest = () => {
     const [answers, setAnswers] = useState([])
     const [index, setIndex] = useState(0)
+    const navigate = useNavigate();
 
     // 답변을 받아서 저장해 주는 함수
     const handleAnswer = (answer) => {
@@ -65,9 +63,8 @@ const MbtiTest = () => {
         if (index < questionsMBTI.length) {
             setIndex(index + 1)
         } else {
-            const mbtiType = calculateMBTIType(answers)
-            alert(`당신의 MBTI 결과는 ${mbtiType} 입니다.`)
-            window.location.reload()
+            const mbtiType = calculateMBTIType(answers)        
+            Swal.alert(`당신의 MBTI는 ${mbtiType} 입니다.`,"수고하셨습니다.","success", () => {navigate("/")})
         }
     }
 
@@ -100,7 +97,7 @@ const MbtiTest = () => {
     }
 
     return (
-        <>
+        <div>
             <div>
                 {index <questionsMBTI.length?
                 <Question
@@ -108,10 +105,14 @@ const MbtiTest = () => {
                 options={options[0].options}
                 onAnswer={handleAnswer}
                 />
-                    :<button onClick={handleAnswer}>수고하셨습니다. 결과보기</button>
+                    :
+                    <div>
+                    <p className='finishp'>수고하셨습니다😊</p>
+                    <button className='finish' onClick={handleAnswer}>결과보기👉</button>
+                    </div>
                 }
             </div>
-        </>
+        </div>
     )
 }
 
