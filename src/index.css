@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("../public/img/건축물.jpg") no-repeat center;
+  background: url("../public/img/main.png") no-repeat center;
 }
 
 code {
