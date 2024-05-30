@@ -4,12 +4,11 @@ import React, { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Swal from '../api/alert';
 import * as auth from '../api/auth';
-import MatchingForm from '../component/Matching/MatchingForm';
 
 export const LoginContext = createContext();
 LoginContext.displayName = 'LoginContextName';
 
-export const LoginContextProvider = ({children}) => {
+export const LoginContextProvider = ({ children }) => {
   // 페이지 이동
   const navigate = useNavigate();
 
@@ -66,23 +65,22 @@ export const LoginContextProvider = ({children}) => {
     console.log(`username : ${loginId}`);
     console.log(`password : ${password}`);
 
-    // 아이디 저장
-    if (rememberId) Cookies.set('rememberId', loginId);
-    else Cookies.remove('rememberId');
-
     try {
-      const { statusCode, responseData } = await auth.login(loginId, password);
+      const res = await auth.auth_login(loginId, password);
 
-      console.log(responseData);
+      //console.log(responseData);
 
-      if (statusCode === 200) {
+  if (res.statusCode === 200) {
         // 로그인 체크 ➡ 로그인 세팅
-        loginCheck();
-
+        //loginCheck();
+        // 아이디 저장
+        if (rememberId) Cookies.set('rememberId', loginId);
+        else Cookies.remove('rememberId');
+        loginSetting({"loginId":loginId,"userName":res.responseData.memberName});
         // 페이지 이동 ➡ "/" (메인)
         // TODO : 메인 화면으로 꼭 이동할 필요가 있을까?
         Swal.alert('로그인 성공', '메인 화면으로 이동합니다.', 'success', () => {
-          navigate('/home');
+          navigate('/');
         });
       }
     } catch (error) {
@@ -102,7 +100,7 @@ export const LoginContextProvider = ({children}) => {
       // 로그아웃 세팅
       // logoutSetting()
       // 페이지 이동 ➡ "/" (메인)
-      navigate('/home');
+      navigate('/');
       return;
     }
 
@@ -112,7 +110,7 @@ export const LoginContextProvider = ({children}) => {
         // logoutSetting()
 
         // 페이지 이동 ➡ "/" (메인)
-        navigate('/home');
+        navigate('/');
       }
     });
   };
@@ -128,8 +126,8 @@ export const LoginContextProvider = ({children}) => {
     setIsLogin(true);
 
     // 유저정보 세팅
-    // const updateUserInfo = { userId, userName };
-    // setUserInfo(updateUserInfo);
+    const updateUserInfo = { userId, userName };
+    setUserInfo(updateUserInfo);
   };
 
   // 로그아웃 세팅
@@ -148,11 +146,9 @@ export const LoginContextProvider = ({children}) => {
   }, []);
 
   return (
-    <div>
     <LoginContext.Provider value={{ isLogin, userInfo, loginCheck, login, logout }}>
       {children}
     </LoginContext.Provider>
-    </div>
   );
 };
 

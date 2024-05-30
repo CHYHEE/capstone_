@@ -1,20 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../../context/LoginContextProvider';
 import './LoginForm.css';
 import Find from "../Find/Find";
 import {alert} from "../../api/alert";
-import {join} from "../../api/auth";
+import {join, checkId} from "../../api/auth";
 
 const LoginForm = () => {
     const { login } = useContext(LoginContext);
     const [isSignUpActive, setIsSignUpActive] = useState(false);
     const [show, setShow] = useState(false);
-    const navigate = useNavigate();
-
-    const handleLogin = () => {
-        navigate('/');
-    };
 
     const handleSignUpClick = () => {
         setIsSignUpActive(true);
@@ -23,6 +17,7 @@ const LoginForm = () => {
     const handleSignInClick = () => {
         setIsSignUpActive(false);
     };
+
 
     const handleShow = () => {
         setShow(true);
@@ -36,22 +31,29 @@ const LoginForm = () => {
         const mbti = e.target.mbti.value
         const username = e.target.username.value
         const birth = e.target.date.value
-        const gender = e.target.gender.value
+        const man = e.target.man.value
         const phone = e.target.phone.value
-
-        join(id, password, mbti, username, birth, gender, phone)
+        const gender = man == 1 ? "남" : "여";
+        const res = join(id, password, mbti, username, birth, gender, phone);
+        if(res.statusCode == 200){
+            alert('회원가입 성공!');
+        }
+        else{
+            alert('회원가입 실패!');
+        }
         const user = { id, password, confirmPassword, mbti, username, birth, gender, phone };
-        login(user);
+        //login(user);
     }
 
     const onLogin = (e) => {
-        e.preventDefault()
-        const id = e.target.id.value
-        const password = e.target.password.value
-        login(id, password)
+        e.preventDefault();
+        const id = e.target[0].value;
+        const password = e.target[1].value;
+        
+        let res = login(id, password);
     }
 
-    const checkPasswordMatch=()=>{
+    const checkPasswordMatch = async()=>{
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
         const username = document.getElementById('username').value;
@@ -59,7 +61,8 @@ const LoginForm = () => {
         const phone = document.getElementById('phone').value;
         const mbti = document.getElementById('mbti').value;
         const id = document.getElementById('id').value;
-
+        const man = document.getElementById('man').value;
+        const gender = man==1 ? "남" : "여";
         if (id === ''){
             alert('아이디를 입력해주세요.');
         } else if(password === '' || confirmPassword === ''){
@@ -75,27 +78,44 @@ const LoginForm = () => {
         } else if(phone === ''){
             alert('휴대폰 번호를 입력해주세요.');
         } else {
-            alert('회원가입이 완료되었습니다.');
+            const res = await join(id, password, mbti, username, date, gender, phone);
+            if(res.statusCode == 200){
+                alert('회원가입 성공!');
+            }
+            else{
+                alert('회원가입 실패!');
+            }
         }
 
     }
 
-    const checkDuplicate=()=>{
-        const ids = [];
-        const id = document.getElementById('id').value;
-        if(ids.includes(id)){
-            alert('이미 존재하는 아이디입니다. 다른 아이디를 입력해주세요.');
-        } else if(id === '') {
-            alert('아이디를 입력해주세요.');
-        } else {
-            alert('사용 가능한 아이디입니다.');
+    const checkDuplicate= async () => {
+        try{
+            const id = document.getElementById('id').value;
+
+            if(id === '') {
+                alert('아이디를 입력해주세요.');
+                return;
+            }
+            //id 확인 요청
+            let res = await checkId(id);
+            if(res.statusCode == 200){
+                alert('사용 가능한 아이디입니다.');
+            } 
+            else{
+                alert('이미 사용중인 아이디입니다.');
+            }
         }
+        catch (error){
+            alert('이미 사용중인 아이디입니다.');
+        }
+
     }
 
     return (
         <div className={`container ${isSignUpActive ? 'right-panel-active' : ''}`} id="container">
             <div className="form-container sign-up-container">
-                <form action="" onSubmit={(e) => onJoin(e)}>
+                <form action="" >
                     <label style={{fontSize: "25px"}}>회원정보 입력</label>
                     <p style={{marginTop : '-3px'}}>회원 가입을 위해 필요한 정보를 입력해주세요.</p>
                     <label style={{marginRight: '330px'}}>필수 항목 ✔</label>
@@ -131,7 +151,7 @@ const LoginForm = () => {
                             </div>
                             <div className="radio-container">
                                 <label>성별</label>
-                                <input type="radio" id="man" name="drone" value="1"/>남자
+                                <input type="radio" id="man" name="drone" value="1"/> 남자
                                 <p className='label-input-container' style={{marginRight: '10px'}}></p>
                                 <input type="radio" id="woman" name="drone" value="2"/>여자
                             </div>
@@ -141,7 +161,7 @@ const LoginForm = () => {
                             </div>
                         </fieldset>
                     <br/>
-                        <button onClick={checkPasswordMatch} type='submit'>Sign Up</button>
+                        <button type='submit' onClick={checkPasswordMatch}>Sign Up!!</button>
                 </form>
             </div>
             <div className="form-container sign-in-container">
@@ -154,7 +174,7 @@ const LoginForm = () => {
                     <br/>
                     <Find/>
                     <br/>
-                    <button onClick={handleLogin}>Sign In</button>
+                    <button>Sign In</button>
                 </form>
             </div>
             <div className="overlay-container">
