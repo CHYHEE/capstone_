@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginContextProvider from "./context/LoginContextProvider";
 import Home from './page/Home';
 import Login from './page/Login';
-import Chat from './page/Chat';
 import Mypage from "./page/Mypage";
 import Introduction from "./page/Introduction";
 import Matching from "./page/Matching";
@@ -22,7 +21,7 @@ const App = () => {
             <Route path="/mypage" element={<Mypage/>}/>
             <Route path="/mbtitest" element={<MbtiTestPage/>}/>
             <Route path="/introduction" element={<Introduction/>}/>
-            <Route path="/chat" element={<Chat/>}/>
+            {/* <Route path="/chat" element={<Chat/>}/> */}
             <Route path="/matching" element={<Matching/>}/>
           </Routes>
         </LoginContextProvider>

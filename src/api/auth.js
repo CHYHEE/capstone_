@@ -29,8 +29,11 @@ export const login = (loginId, password) =>{ return  api.post('/login', {
 }
 
 // 사용자 정보
-export const info = () => {return api.get("/users/info")}
-// .then(response => {
+// export const info = () => {return api.get("/users/info", {
+//     "loginId":loginId,
+//     "password":password
+// })
+//     .then(response => {
 //     const statusCode = response.status;
 
 //     const responseData = response.data;

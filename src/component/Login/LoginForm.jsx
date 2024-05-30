@@ -29,11 +29,12 @@ const LoginForm = () => {
         const confirmPassword = e.target.confirmPassword.value
         const mbti = e.target.mbti.value
         const username = e.target.username.value
-        const date = e.target.date.value
+        const birth = e.target.date.value
+        const gender = e.target.gender.value
         const phone = e.target.phone.value
 
-        join(id, password, confirmPassword, mbti, username, date, phone)
-        const user = { id, password, confirmPassword, mbti, username, date, phone };
+        join(id, password, mbti, username, birth, gender, phone)
+        const user = { id, password, confirmPassword, mbti, username, birth, gender, phone };
         login(user);
     }
 
