@@ -47,16 +47,18 @@ export const login = (loginId, password) =>{ return  api.post('/login', {
 //     // Promise로 오류 반환
 //     throw error;
 //   });
-// };
+//
 
 // 회원가입
-
-export const join = (LoginId, password, UserName, Email) => {return api.post("/join",
+export const join = (LoginId, password, mbti, UserName, birth, gender, phone) => {return api.post("/join",
     {
         "loginId":LoginId,
         "password":password,
+        "mbti":mbti,
         "userName":UserName,
-        "email":Email,
+        "birth":birth,
+        "gender":gender,
+        "phone":phone
     })
     .then(response => {
         // 응답 상태 코드
@@ -100,30 +102,14 @@ export const pw = (userName,userId ,email)=> {return api.get('/users/pw',
     })
 };
 
-export const delFloor = (buildingId, floorNum) => {console.log("매개변수:",buildingId,floorNum);
-    const url = `/file/${buildingId}/${floorNum}`;
-    return api.delete(url)
-};
-
-
-export const delBuild = (buildingId) => {console.log("매개변수:",buildingId);
-    const url = `/file/${buildingId}`;
-    console.log(url);
-    return api.delete(url)
-};
-
-
+//
 // 회원정보 수정
-export const update = (data) => api.put("/users", data)
+//export const update = (data) => api.put("/users", data)
 
 
 // 회원탈퇴
-export const remove = (userId) => api.delete(`/users/${userId}`)
+//export const remove = (userId) => api.delete(`/users/${userId}`)
 
+//export const logout = () => api.post("/logout")
 
-export const logout = () => api.post("/logout")
-
-export const session = () => api.get("/users/session")
-
-export const list = () => api.get("/file/list")
-
+// export const session = () => api.get("/users/session")
