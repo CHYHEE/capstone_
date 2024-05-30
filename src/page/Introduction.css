@@ -38,84 +38,71 @@
     padding: 20px;
 }
 
-li {
+.card {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
     width: 300px;
-    padding: 20px;
     text-align: center;
     transition: transform 0.2s;
     position: absolute;
-    top: 10%;
-    right: 32%;
+    bottom: 37%;
+    left: 6%;
     border: 1px solid gray;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
+    width: 550px;
+    height: 170px;
+    text-align: right;
 }
 .card2 {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
     width: 300px;
-    padding: 20px;
     text-align: center;
     transition: transform 0.2s;
     position: absolute;
-    top: 13%;
-    right: 7%;
+    bottom: 37%;
+    right: 6.5%;
     border: 1px solid gray;
+    font-size: 25px;
+    font-weight: bold;
+    width: 550px;
+    height: 170px;
+    text-align: right;
 }
 .card3 {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
     width: 300px;
-    padding: 20px;
     text-align: center;
     transition: transform 0.2s;
     position: absolute;
-    top: 33%;
-    right: 32%;
+    bottom: 9%;
+    left: 6%;
     border: 1px solid gray;
+    font-size: 25px;
+    font-weight: bold;
+    width: 550px;
+    height: 170px;
+    text-align: right;
 }
 .card4 {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
     width: 300px;
-    padding: 20px;
     text-align: center;
     transition: transform 0.2s;
     position: absolute;
-    top: 33%;
-    right: 7%;
+    bottom: 9%;
+    right: 6.5%;
     border: 1px solid gray;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card img {
-    width: 50px;
-    margin-bottom: 10px;
-}
-
-.card h3 {
-    font-size: 18px;
-    color: #333;
-}
-
-.card p {
-    font-size: 14px;
-    color: #666;
-}
-
-.link {
-    display: block;
-    margin-top: 10px;
-    font-size: 14px;
-    color: #ff6b6b;
-    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    width: 550px;
+    height: 170px;
+    text-align: right;
 }
