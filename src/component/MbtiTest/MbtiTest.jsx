@@ -6,23 +6,26 @@ import * as Swal from '../../api/alert';
 import { useNavigate } from 'react-router-dom';
 
 
-const Question = ({question, options, onAnswer}) => {
+function Question ({question, options, onAnswer}) {
     // 답, 선택지 상태변수 관리
     const [selectedOption, setSelectedOption] = useState('');
 
+    // const handleOptionChange = (e) => {
+    //     setSelectedOption(e.target.value)
+    // }
+
 
     // 다음 문제로 넘어가는 함수
-    const handleNextQuestion = () => {
+    const handleNextQuestion = (e) => {
+        setSelectedOption(e.target.value)
         if (selectedOption ==="그렇다.") {
             onAnswer(question.YES);
-        } else onAnswer(question.No);
-
+        }
+        else onAnswer(question.No); 
         console.log(question.question);
     }
 
-    const handleOptionChange = (e) => {
-        setSelectedOption(e.target.value)
-    }
+    
 
     return (
         <>
@@ -37,7 +40,6 @@ const Question = ({question, options, onAnswer}) => {
                                     name="option"
                                     value={option}
                                     checked={selectedOption === option}
-                                    onChange={handleOptionChange}
                                     className="input"
                                     onClick={handleNextQuestion}
                                 />

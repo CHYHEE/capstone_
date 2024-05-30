@@ -47,7 +47,7 @@ const Header = () =>{
                             <li className="font">
                                 <span onClick={()=>navigate("/mypage")}>
                                     <IoPersonSharp style={{fontSize: '17px'}}/>
-                                    {userInfo.userId}
+                                    {userInfo.username}
                                 </span>님 환영합니다.
                             </li>
                             <button className='link' onClick={() => logout()}>

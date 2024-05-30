@@ -29,25 +29,24 @@ export const login = (loginId, password) =>{ return  api.post('/login', {
 }
 
 // 사용자 정보
-// export const info = () => {return api.get("/users/info", {
-//     "loginId":loginId,
-//     "password":password
-// })
-//     .then(response => {
-//     const statusCode = response.status;
-
-//     const responseData = response.data;
-
-//     return { statusCode, responseData };
-// })
-// .catch(error => {
-//     // 오류가 발생한 경우
-//     console.error('Error during login request:', error);
-
-//     // Promise로 오류 반환
-//     throw error;
-//   });
-//
+// 사용자 정보
+export const info = (loginId, password) => {
+    return api.get("/users/info", {
+        "loginId": loginId,
+        "password": password
+    })
+    .then(response => {
+        const statusCode = response.status;
+        const responseData = response.data;
+        return { statusCode, responseData };
+    })
+    .catch(error => {
+        // 오류가 발생한 경우
+        console.error('Error during login request:', error);
+        // Promise로 오류 반환
+        throw error;
+    });
+}
 
 // 회원가입
 export const join = (LoginId, password, mbti, UserName, birth, gender, phone) => {return api.post("/join",

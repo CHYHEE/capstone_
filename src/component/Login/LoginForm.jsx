@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../../context/LoginContextProvider';
 import './LoginForm.css';
 import Find from "../Find/Find";
@@ -9,6 +10,11 @@ const LoginForm = () => {
     const { login } = useContext(LoginContext);
     const [isSignUpActive, setIsSignUpActive] = useState(false);
     const [show, setShow] = useState(false);
+    const navigate = useNavigate();
+
+    const handleLogin = () => {
+        navigate('/');
+    };
 
     const handleSignUpClick = () => {
         setIsSignUpActive(true);
@@ -148,7 +154,7 @@ const LoginForm = () => {
                     <br/>
                     <Find/>
                     <br/>
-                    <button>Sign In</button>
+                    <button onClick={handleLogin}>Sign In</button>
                 </form>
             </div>
             <div className="overlay-container">

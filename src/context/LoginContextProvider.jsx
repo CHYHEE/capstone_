@@ -4,11 +4,12 @@ import React, { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Swal from '../api/alert';
 import * as auth from '../api/auth';
+import MatchingForm from '../component/Matching/MatchingForm';
 
 export const LoginContext = createContext();
 LoginContext.displayName = 'LoginContextName';
 
-export const LoginContextProvider = ({ children }) => {
+export const LoginContextProvider = ({children}) => {
   // 페이지 이동
   const navigate = useNavigate();
 
@@ -147,9 +148,11 @@ export const LoginContextProvider = ({ children }) => {
   }, []);
 
   return (
+    <div>
     <LoginContext.Provider value={{ isLogin, userInfo, loginCheck, login, logout }}>
       {children}
     </LoginContext.Provider>
+    </div>
   );
 };
 
