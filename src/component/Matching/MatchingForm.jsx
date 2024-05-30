@@ -1,9 +1,15 @@
 import React from "react";
 import {FadeLoader} from 'react-spinners';
 import "./MatchingForm.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MatchingForm = () => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("/");
+    }
+
     return (
         <div>
             <Link>{/* {userInfo.userId} */}님 환영합니다.</Link>
@@ -22,7 +28,7 @@ const MatchingForm = () => {
                     width={9}
                 />
                 <p className="matchingimgP">매칭 중</p>
-                <button className="matchingbtn">매칭 취소</button>
+                <button onClick={handleClick} className="matchingbtn">매칭 취소</button>
         </div>
     )
 }
