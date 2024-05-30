@@ -1,0 +1,35 @@
+.matchingimg {
+    width: 47%;
+    height: 80%;
+    position: absolute;
+    top: 55%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.matchingimgP {
+    font-size: 80px;
+    font-weight: bold;
+    position: absolute;
+    top: 21.5%;
+    right: 2.5%;
+    transform: translate(-50%, -50%);
+    color : #ED648B;
+    text-shadow: 5px 5px 5px #f4c2d0;
+}
+
+.matchingbtn {
+    position: absolute;
+    top: 26.5%;
+    right: -3.5%;
+    transform: translate(-50%, -50%);
+    width: 130px;
+    height: 50px;
+    font-size: 25px;
+    background-color: #f4c2d0;
+    color:#ED648B;
+    font-weight: bold;
+    border-radius: 15px;
+    border: none;
+    padding: 0;
+}

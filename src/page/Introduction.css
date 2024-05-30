@@ -1,0 +1,121 @@
+.introductionH {
+    position: absolute;
+    top: 10%;
+    left: 2%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: #ED648B;
+    text-shadow: 2px 2px 2px #f4c2d0;
+    z-index: 1;
+}
+
+.introductionH2{
+    position: absolute;
+    top: 23%;
+    left: 3.5%;
+    transform: translateY(-50%);
+    color: black;
+    z-index: 1;
+}
+
+.introductionH3{
+    position: absolute;
+    top: 30%;
+    left: 3.5%;
+    transform: translateY(-50%);
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+    z-index: 1;
+}
+
+
+.container1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+li {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+    position: absolute;
+    top: 10%;
+    right: 32%;
+    border: 1px solid gray;
+    font-size: 20px;
+    font-weight: bold;
+}
+.card2 {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+    position: absolute;
+    top: 13%;
+    right: 7%;
+    border: 1px solid gray;
+}
+.card3 {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+    position: absolute;
+    top: 33%;
+    right: 32%;
+    border: 1px solid gray;
+}
+.card4 {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+    position: absolute;
+    top: 33%;
+    right: 7%;
+    border: 1px solid gray;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 18px;
+    color: #333;
+}
+
+.card p {
+    font-size: 14px;
+    color: #666;
+}
+
+.link {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ff6b6b;
+    text-decoration: none;
+}
