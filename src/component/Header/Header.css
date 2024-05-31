@@ -67,6 +67,17 @@ header {
     cursor: pointer;
 }
 
+.mypage {
+    white-space: nowrap; /* 텍스트가 길어도 한 줄에 표시되도록 설정 */
+    color: #ED648B  ;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 25%;
+    top: 5%;
+}
+
 
 .util ul{
     display: flex;
@@ -80,4 +91,12 @@ header {
     margin-top: 60px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.link {
+    background-color: #fff;
+    color: #ED648B;
+    width: 100px;
+    height: 45px;
+    padding: 0%;
 }

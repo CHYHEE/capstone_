@@ -6,7 +6,7 @@ import api from "./api";
 // export const login = (loginId, password) => api.post(`/login?username=${loginId}&password=${password}`, );
 export const auth_login = async (loginId, password) => {
     try {
-        const response = await axios.post("http://127.0.0.1:8080/member/login", {
+        const response = await axios.post("http://10.101.162.88:8080/member/login", {
             loginId: loginId,
             password: password
         });
@@ -52,7 +52,7 @@ export const info = async  (loginId, password) => {
 export const checkId = async (loginId) => {
     try {
         // 비동기적인 GET 요청
-        const response = await axios.get("http://127.0.0.1:8080/member/checkDupleId", {
+        const response = await axios.get("http://10.101.162.88:8080/member/checkDupleId", {
             params: { "checkId": loginId }
         });
 
@@ -69,7 +69,7 @@ export const checkId = async (loginId) => {
 // 회원가입
 export const join = async (loginId, password, mbti, userName, birth, gender, phone) => {
     try {
-        const response = await axios.post("http://127.0.0.1:8080/member/join", {
+        const response = await axios.post("http://10.101.162.88:8080/member/join", {
             loginId: loginId,
             password: password,
             mbti: mbti,

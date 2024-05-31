@@ -1,76 +1,55 @@
-import React from 'react'
-import {useState} from "react";
-import {questionsMBTI, options} from "./TestForm"
-import './MbtiTest.css'
+import React, { useState } from 'react';
+import { questionsMBTI, options } from "./TestForm";
+import './MbtiTest.css';
 import * as Swal from '../../api/alert';
 import { useNavigate } from 'react-router-dom';
 
-
-function Question ({question, options, onAnswer}) {
-    // 답, 선택지 상태변수 관리
+function Question({ question, options, onAnswer }) {
     const [selectedOption, setSelectedOption] = useState('');
 
-    // const handleOptionChange = (e) => {
-    //     setSelectedOption(e.target.value)
-    // }
-
-
-    // 다음 문제로 넘어가는 함수
-    const handleNextQuestion = (e) => {
-        setSelectedOption(e.target.value)
-        if (selectedOption ==="그렇다.") {
-            onAnswer(question.YES);
-        }
-        else onAnswer(question.No); 
-        console.log(question.question);
-    }
-
-    
+    const handleOptionClick = (option) => {
+        setSelectedOption(option);
+        onAnswer(option === "그렇다." ? question.YES : question.NO);
+    };
 
     return (
-        <>
-            <div className='form'>
-                <h2 className='h2'>{question.question}</h2>
-                <form>
-                    {options.map((option) => (
-                        <div key={option}>
-                            <label>
-                                <input
-                                    type="button"
-                                    name="option"
-                                    value={option}
-                                    checked={selectedOption === option}
-                                    className="input"
-                                    onClick={handleNextQuestion}
-                                />
-                            </label>
-                        </div>
-                    ))}
-                </form>
+        <div className='form'>
+            <h2 className='h2'>{question.question}</h2>
+            <div>
+                {options.map((option) => (
+                    <div key={option}>
+                        <button
+                            type="button"
+                            value={option}
+                            className={`input ${selectedOption === option ? 'selected' : ''}`}
+                            onClick={() => handleOptionClick(option)}
+                        >
+                            {option}
+                        </button>
+                    </div>
+                ))}
             </div>
-        </>
+        </div>
     );
 }
 
 const MbtiTest = () => {
-    const [answers, setAnswers] = useState([])
-    const [index, setIndex] = useState(0)
+    const [answers, setAnswers] = useState([]);
+    const [index, setIndex] = useState(0);
     const navigate = useNavigate();
 
-    // 답변을 받아서 저장해 주는 함수
     const handleAnswer = (answer) => {
-        setAnswers([...answers, answer])
-        console.log('answers', answer)
+        setAnswers([...answers, answer]);
+        console.log('answers', answers);
 
-        if (index < questionsMBTI.length) {
-            setIndex(index + 1)
+        if (index < questionsMBTI.length - 1) {
+            setIndex(index + 1);
         } else {
-            const mbtiType = calculateMBTIType(answers)        
-            Swal.alert(`당신의 MBTI는 ${mbtiType} 입니다.`,"수고하셨습니다.","success", () => {navigate("/")})
+            const mbtiType = calculateMBTIType([...answers, answer]);
+            Swal.alert(`당신의 MBTI는 ${mbtiType} 입니다.`, "수고하셨습니다.", "success", () => { navigate("/") });
         }
-    }
+    };
 
-    //MBTI 결과를 해석해 주는 함수
     const calculateMBTIType = (answers) => {
         const dimensionCounts = {
             E: 0,
@@ -85,7 +64,6 @@ const MbtiTest = () => {
         answers.forEach((char) => {
             dimensionCounts[char]++;
         });
-        // Determine the MBTI type
         const mbtiType = [
             dimensionCounts['E'] > dimensionCounts['I'] ? 'E' : 'I',
             dimensionCounts['S'] > dimensionCounts['N'] ? 'S' : 'N',
@@ -96,26 +74,28 @@ const MbtiTest = () => {
         console.log('answer', answers);
         console.log('Your MBTI Type:', mbtiType);
         return mbtiType;
-    }
+    };
 
     return (
         <div>
             <div>
-                {index <questionsMBTI.length?
-                <Question
-                question={questionsMBTI[index]}
-                options={options[0].options}
-                onAnswer={handleAnswer}
-                />
+                {index < questionsMBTI.length ?
+                    <Question
+                        question={questionsMBTI[index]}
+                        options={options[0].options}
+                        onAnswer={handleAnswer}
+                    />
                     :
                     <div>
-                    <p className='finishp'>수고하셨습니다😊</p>
-                    <button className='finish' onClick={handleAnswer}>결과보기👉</button>
+                        <p className='finishp'>수고하셨습니다😊</p>
+                        <button className='finish' onClick={() => Swal.alert(`당신의 MBTI는 ${calculateMBTIType(answers)} 입니다.`, "수고하셨습니다.", "success", () => { navigate("/") })}>
+                            결과보기👉
+                        </button>
                     </div>
                 }
             </div>
         </div>
-    )
+    );
 }
 
-export default MbtiTest
+export default MbtiTest;

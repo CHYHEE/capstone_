@@ -1,28 +1,26 @@
 // MyPageForm.jsx
 
 import React from 'react';
+import { useContext } from 'react';
+import { LoginContext } from '../../context/LoginContextProvider';
+import './MypageForm.css';
 
 const MyPageForm = () => {
+    const {userInfo} = useContext(LoginContext);
+
     return (
         <div className="my-page">
             <header className="header">
                 <h1 className="header-title">My Page</h1>
             </header>
-            <nav className="navigation">
-                <ul className="navigation-list">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </nav>
             <div className="container">
                 <div className="profile">
-                    <img className="KakaoTalk_20240411_155801141.jpg" src="" alt="Profile Picture" />
+                    <img className="profile-picture" src="/img/프로필.webp" alt="Profile Picture" />
                     <div className="profile-info">
-                        <h2 className="profile-name">User Name</h2>
-                        <p className="profile-detail">Email: user@example.com</p>
-                        <p className="profile-detail">Location: City, Country</p>
+                        <h2>{userInfo.username}</h2>
+                        <p className="profile-detail">ID: {userInfo.id}</p>
+                        <p className="profile-detail">Phone: {userInfo.phone}</p>
+                        <p className="profile-detail">MBTI: {userInfo.mbti}</p>
                     </div>
                 </div>
                 <div className="content">
