@@ -11,7 +11,7 @@
     font-size: 80px;
     font-weight: bold;
     position: absolute;
-    top: 21.5%;
+    top: 10%;
     right: 2.5%;
     transform: translate(-50%, -50%);
     color : #ED648B;
@@ -20,17 +20,17 @@
 
 .matchingbtn {
     position: absolute;
-    top: 26.5%;
-    right: -3.5%;
+    top: 15%;
+    right: 0.5%;
     transform: translate(-50%, -50%);
-    width: 130px;
-    height: 50px;
-    font-size: 25px;
-    background-color: #f4c2d0;
+    width: 95px;
+    height: 30px;
+    font-size: 18px;
+    background-color: #fff;
     color:#ED648B;
     font-weight: bold;
     border-radius: 15px;
-    border: none;
+    border: #ED648B solid 2px;
     padding: 0;
 }
 .matchingbtn:active {
@@ -39,4 +39,36 @@
 
 .matchingbtn:focus {
     outline: none;
+}
+
+.userid {
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 8%;
+    left: 3%;
+}
+
+.userinfo {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    position: absolute;
+    bottom: 10%;
+    right: 6%;
+    border: 3px solid rgb(228, 116, 116);
+    font-size: 40px;
+    font-weight: bold;
+    width: 40%;
+    height: 65%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.userinfoP {
+    font-size: 35px;
+    font-weight: bold;
 }

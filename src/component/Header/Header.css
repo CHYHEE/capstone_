@@ -55,11 +55,12 @@ header {
 
 .label-container {
     display: flex;
-    gap: 20px; /* 레이블 사이 간격 조절 */
+    gap: 10px; /* 레이블 사이 간격 조절 */
 }
 
 .label-container label {
-    margin-left: 30px;
+    margin-left: 20px;
+    margin-top: 90px;
     white-space: nowrap; /* 텍스트가 길어도 한 줄에 표시되도록 설정 */
     color: #ED648B  ;
     font-size: 30px;
@@ -68,14 +69,15 @@ header {
 }
 
 .mypage {
+    display: flex;
+    gap: 10px; /* 레이블 사이 간격 조절 */
+    margin-left: 20px;
+    margin-top: 90px;
     white-space: nowrap; /* 텍스트가 길어도 한 줄에 표시되도록 설정 */
     color: #ED648B  ;
     font-size: 30px;
     font-weight: bold;
     cursor: pointer;
-    position: absolute;
-    right: 25%;
-    top: 5%;
 }
 
 
@@ -86,17 +88,24 @@ header {
     cursor: pointer;
 }
 
-.li {
-    font-size: 20px;
-    margin-top: 60px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
 .link {
     background-color: #fff;
     color: #ED648B;
-    width: 100px;
-    height: 45px;
-    padding: 0%;
+    width: 90px;
+    height: 35px;
+    padding: 0;
+    text-align: center;
+    font-size: 15px;
+    position: absolute;
+    top: 16%;
+    right: 12%;
+}
+
+.username {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 11%;
+    right: 11%;
 }

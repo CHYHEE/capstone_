@@ -98,7 +98,7 @@ export const LoginContextProvider = ({ children }) => {
     // comfirm 없이 강제 로그아웃
     if (force) {
       // 로그아웃 세팅
-      // logoutSetting()
+      logoutSetting()
       // 페이지 이동 ➡ "/" (메인)
       navigate('/');
       return;
@@ -107,7 +107,7 @@ export const LoginContextProvider = ({ children }) => {
     Swal.confirms('로그아웃하시겠습니까?', '로그아웃을 진행합니다.', 'warning', (result) => {
       if (result.isConfirmed) {
         // 로그아웃 세팅
-        // logoutSetting()
+        logoutSetting()
 
         // 페이지 이동 ➡ "/" (메인)
         navigate('/');
@@ -130,15 +130,15 @@ export const LoginContextProvider = ({ children }) => {
     setUserInfo(updateUserInfo);
   };
 
-  // 로그아웃 세팅
-  // const logoutSetting = async () => {
-  //   await auth.logout();
-  //   // 상태 비우기
-  //   setIsLogin(false);
-  //   setUserInfo(null);
-  //   //setRoles(null)
-  //   // 🍪 쿠키 지우기
-  // };
+  //로그아웃 세팅
+  const logoutSetting = async () => {
+    //await auth.logout();
+    // 상태 비우기
+    setIsLogin(false);
+    setUserInfo(null);
+    //setRoles(null)
+    // 🍪 쿠키 지우기
+  };
 
   useEffect(() => {
     // 로그인 체크

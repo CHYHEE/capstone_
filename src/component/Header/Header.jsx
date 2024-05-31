@@ -11,7 +11,7 @@ const Header = () =>{
     // ✅ logout()  : 로그아웃 함수 - setIsLogin(false)
     const { isLogin, logout, userInfo } = useContext(LoginContext);
     const navigate = useNavigate();
-    
+
     return (
         <header>
             <div className="logo">
@@ -35,17 +35,17 @@ const Header = () =>{
                         </div>
                     ) : (
                         <>
-                            <div className='mypage'>
+                            <div className='logo label-container'>
                                 <label onClick={() => navigate("/mypage")}>마이페이지</label>
                             </div>
-                            {/* <li className="font">
+                            <li className="username">
                                 <span onClick={()=>navigate("/mypage")}>
                                     <IoPersonSharp style={{fontSize: '17px'}}/>
                                     {userInfo.username}
                                 </span>님 환영합니다.
-                            </li> */}
+                            </li>
                             <button className='link' onClick={() => logout()}>
-                                <li className="font" style={{fontSize: '16px'}}>로그아웃</li>
+                                로그아웃
                             </button>
                         </>
                     )}
