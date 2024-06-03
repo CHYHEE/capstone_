@@ -1,15 +1,15 @@
-import React, {useContext} from 'react';
-import {Link} from 'react-router-dom'
-import './Header.css'
-import {LoginContext} from '../../context/LoginContextProvider';
+import React, { useContext, useState } from 'react';
 import { IoPersonSharp } from "react-icons/io5";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { LoginContext } from '../../context/LoginContextProvider';
+import './Header.css';
 
 const Header = () =>{
 
     // ✅ isLogin   : 로그인 여부 - Y(true), N(false)
     // ✅ logout()  : 로그아웃 함수 - setIsLogin(false)
     const { isLogin, logout, userInfo } = useContext(LoginContext);
+    const [data, setData] = useState(null);
     const navigate = useNavigate();
 
     return (
