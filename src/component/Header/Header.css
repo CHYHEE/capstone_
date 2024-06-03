@@ -62,9 +62,8 @@ header {
     margin-left: 20px;
     margin-top: 90px;
     white-space: nowrap; /* 텍스트가 길어도 한 줄에 표시되도록 설정 */
-    color: #ED648B  ;
+    color: black  ;
     font-size: 30px;
-    font-weight: bold;
     cursor: pointer;
 }
 
@@ -98,7 +97,7 @@ header {
     font-size: 15px;
     position: absolute;
     top: 16%;
-    right: 12%;
+    right: 11%;
 }
 
 .username {

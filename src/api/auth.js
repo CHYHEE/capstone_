@@ -3,11 +3,14 @@ import api from "./api";
 
 // 로그인
 // export const login = (loginId, password) => api.post(`/login?username=${loginId}&password=${password}`, );
-export const auth_login = async (loginId, password) => {
+export const auth_login = async (loginId, password, birth, gender, mbti) => {
     try {
         const response = await axios.post("http://127.0.0.1:8080/member/login", {
             loginId: loginId,
-            password: password
+            password: password,
+            birth: birth,
+            gender: gender,
+            mbti: mbti
         });
 
         // 응답 상태 코드
@@ -29,10 +32,13 @@ export const auth_login = async (loginId, password) => {
     }
 };
 // 사용자 정보
-export const info = async  (loginId, password) => {
+export const info = async  (loginId, password, birth, gender, mbti) => {
     await api.post("/member/login", {
     "loginId":loginId,
-    "password":password
+    "password":password,
+    "birth":birth,
+    "gender":gender,
+    "mbti":mbti
 }).then(response => {
     const statusCode = response.status;
 

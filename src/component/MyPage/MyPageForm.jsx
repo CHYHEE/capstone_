@@ -1,7 +1,6 @@
 // MyPageForm.jsx
 
-import React from 'react';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { LoginContext } from '../../context/LoginContextProvider';
 import './MypageForm.css';
 
@@ -9,11 +8,11 @@ const MyPageForm = () => {
     const {userInfo} = useContext(LoginContext);
 
     return (
-        <div className="my-page">
+        <div>
             <header className="header">
                 <h1 className="header-title">My Page</h1>
             </header>
-            <div className="container">
+            <div>
                 <div className="profile">
                     <img className="profile-picture" src="/img/프로필.webp" alt="Profile Picture" />
                     <div className="profile-info">

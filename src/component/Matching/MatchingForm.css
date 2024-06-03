@@ -49,26 +49,37 @@
     left: 3%;
 }
 
-.userinfo {
+.userinfo{
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-    position: absolute;
-    bottom: 10%;
-    right: 6%;
-    border: 3px solid rgb(228, 116, 116);
-    font-size: 40px;
-    font-weight: bold;
-    width: 40%;
-    height: 65%;
-    display: flex;
-    /* align-items: center; */
-    justify-content: space-between;
-    padding: 20px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  position: absolute;
+  bottom: 10%;
+  right: 6%;
+  border: 3px solid rgb(228, 116, 116);
+  font-size: 20px;
+  font-weight: bold;
+  width: 40%;
+  height: 65%;
+  display: flex;
+  flex-direction: column; /* 자식 요소들을 세로로 배치 */
+  justify-content: flex-start; /* 자식 요소들을 위쪽에 배치 */
+  padding: 20px;
+  box-sizing: border-box; /* 패딩 포함하여 크기 조정 */
 }
-
-.userinfoP {
+  
+  .userinfoP {
     font-size: 35px;
     font-weight: bold;
-}
+    display: block; /* block 요소로 변경 */
+    margin-bottom: 20px; /* 하단 여백 추가 */
+  }
+  
+  .userinfoLabel {
+    display: block; /* 각 라벨을 블록 요소로 변경 */
+    margin-bottom: 27px; /* 각 라벨의 하단 여백 추가 */
+    margin-left: 15px;
+    font-size: 25px; /* 기본 폰트 크기 조정 */
+    color: #333; /* 텍스트 색상 */
+  }

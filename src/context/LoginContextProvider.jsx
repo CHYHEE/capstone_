@@ -1,5 +1,4 @@
 // LoginContextProvider.jsx
-import Cookies from 'js-cookie';
 import React, { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Swal from '../api/alert';
@@ -61,22 +60,22 @@ export const LoginContextProvider = ({ children }) => {
   /**
    * 🔐 로그인
    */
-  const login = async (loginId, password, rememberId) => {
+  const login = async (loginId, password, birth, gender, mbti) => {
     console.log(`username : ${loginId}`);
     console.log(`password : ${password}`);
+    console.log(`birth : ${birth}`);
+    console.log(`gender : ${gender}`);
+    console.log(`mbti : ${mbti}`);
 
     try {
-      const res = await auth.auth_login(loginId, password);
+      const res = await auth.auth_login(loginId, password, birth, gender, mbti);
 
       //console.log(responseData);
 
   if (res.statusCode === 200) {
         // 로그인 체크 ➡ 로그인 세팅
         //loginCheck();
-        // 아이디 저장
-        if (rememberId) Cookies.set('rememberId', loginId);
-        else Cookies.remove('rememberId');
-        loginSetting({"loginId":loginId,"userName":res.responseData.memberName});
+        loginSetting({"loginId":loginId,"userName":res.responseData.memberName, "birth":res.responseData.birth, "gender":res.responseData.gender, "mbti":res.responseData.mbti});
         // 페이지 이동 ➡ "/" (메인)
         // TODO : 메인 화면으로 꼭 이동할 필요가 있을까?
         Swal.alert('로그인 성공', '메인 화면으로 이동합니다.', 'success', () => {
@@ -119,14 +118,21 @@ export const LoginContextProvider = ({ children }) => {
   const loginSetting = async (userData) => {
     const userId = userData.loginId;
     const userName = userData.userName;
+    const userBirth = userData.birth;
+    const userGender = userData.gender;
+    const userMbti = userData.mbti;
 
     console.log(`userId : ${userId}`);
     console.log(`userName : ${userName}`);
+    console.log(`userBirth : ${userBirth}`);
+    console.log(`userGender : ${userGender}`);
+    console.log(`userMbti : ${userMbti}`);
+
     // 로그인 여부
     setIsLogin(true);
 
     // 유저정보 세팅
-    const updateUserInfo = { userId, userName };
+    const updateUserInfo = { userId, userName, userBirth, userGender, userMbti };
     setUserInfo(updateUserInfo);
   };
 
@@ -146,9 +152,11 @@ export const LoginContextProvider = ({ children }) => {
   }, []);
 
   return (
+    <div>
     <LoginContext.Provider value={{ isLogin, userInfo, loginCheck, login, logout }}>
       {children}
     </LoginContext.Provider>
+    </div>
   );
 };
 
