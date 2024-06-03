@@ -38,13 +38,14 @@ const MatchingForm = () => {
                 <button onClick={handleClick} className="matchingbtn">매칭취소</button>
                 <li className="userinfo">
                     <label className="userinfoP">
+                        <IoPersonSharp style={{marginBottom:'6px'}}/>
                         사용자 정보
-                    </label><br/>
-                    <label className="userinfoLabel">ID: {userInfo.userId}</label>
-                    <label className="userinfoLabel">이름: {userInfo.userName}</label>
-                    <label className="userinfoLabel">생년월일: {userInfo.userBirth}</label>
-                    <label className="userinfoLabel">성별: {userInfo.userGender}</label>
-                    <label className="userinfoLabel">MBTI: {userInfo.userMbti}</label>
+                    </label>
+                    <label className="userinfoLabel">ID : {userInfo.userId}</label>
+                    <label className="userinfoLabel">이름 : {userInfo.userName}</label>
+                    <label className="userinfoLabel">생년월일 : {userInfo.userBirth}</label>
+                    <label className="userinfoLabel">성별 : {userInfo.userGender}</label>
+                    <label className="userinfoLabel">MBTI : {userInfo.userMbti}</label>
                 </li>
         </div>
     )

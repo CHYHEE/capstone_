@@ -31,29 +31,22 @@ const Header = () =>{
                     <label onClick={() => navigate("/matching")}>매칭</label>
                 </div>
             </div>
-            <div>
-                <ul className="menu-list">
+            <div className='label-container'>
+                <ul className='menu-list'>
                     {/* 로그인 여부에 따라 조건부 랜더링 */}
-                    { !isLogin ? (
-                        <div className='label-container'>
+                    { !isLogin ? (        
                             <label onClick={handleClick}>
-                                <BsPersonCircle style={{fontSize : '35px'}}/>
-                                <FaSortDown style={{fontSize : '20px'}}/>
+                                <BsPersonCircle style={{fontSize : '35px', color:'black'}}/>
+                                <FaSortDown style={{fontSize : '20px', color:'black'}}/>
                             </label>
-                        </div>
                     ) : (
                         <>
-                            <div className='logo label-container'>
-                                <label onClick={() => navigate("/mypage")}>마이페이지</label>
-                            </div>
-                            <li className="username">
-                                <span style={{fontSize: '20px', color : "#ED648B"}} onClick={() => navigate('/mypage')}>
+                                <label onClick={() => navigate('/mypage')}>                            
                                 {userInfo.userName}님
                                     <BsPersonCircle style={{fontSize : '35px', marginLeft:'5px'}}/>
-                                    <FaSortDown style={{fontSize : '20px'}}/>
-                                </span>
-                            </li>
-                            <button className='link' onClick={() => logout()}>
+                                    <FaSortDown style={{fontSize : '20px'}}/>  
+                                </label>                          
+                            <button onClick={() => logout()}>
                                 로그아웃
                             </button>
                         </>

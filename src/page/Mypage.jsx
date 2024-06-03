@@ -1,8 +1,7 @@
 // MyPage.jsx
 
-import React, {useContext} from 'react'
-import Header from '../component/Header/Header'
-import {LoginContext} from "../context/LoginContextProvider";
+import React from 'react';
+import Header from '../component/Header/Header';
 import MyPageForm from "../component/MyPage/MyPageForm";
 
 

@@ -50,7 +50,7 @@
 }
 
 .userinfo{
-    background-color: #fff;
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
@@ -70,7 +70,7 @@
 }
   
   .userinfoP {
-    font-size: 35px;
+    font-size: 40px;
     font-weight: bold;
     display: block; /* block 요소로 변경 */
     margin-bottom: 20px; /* 하단 여백 추가 */
@@ -80,6 +80,6 @@
     display: block; /* 각 라벨을 블록 요소로 변경 */
     margin-bottom: 27px; /* 각 라벨의 하단 여백 추가 */
     margin-left: 15px;
-    font-size: 25px; /* 기본 폰트 크기 조정 */
+    font-size: 30px; /* 기본 폰트 크기 조정 */
     color: #333; /* 텍스트 색상 */
   }
