@@ -68,7 +68,7 @@ export const checkId = async (loginId) => {
 // 회원가입
 export const join = async (loginId, password, mbti, userName, birth, gender, phone) => {
     try {
-        const response = await axios.post("http://127.0.0.1:8080/member/join", {
+         const response = await axios.post("http://127.0.0.1:8080/member/join", {
             loginId: loginId,
             password: password,
             mbti: mbti,
@@ -100,7 +100,7 @@ export const join = async (loginId, password, mbti, userName, birth, gender, pho
 //api.post(`/login?username=${loginId}&password=${password}`, )
 // return api.get(`/users/id?userName=${userName}&email=${email}`)
 export const id = (userName, email)=> {return api.get('/users/id',
-    {
+    {   
         params: {
             userName: userName,
             email: email,

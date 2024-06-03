@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
-import { questionsMBTI, options } from "./TestForm";
-import './MbtiTest.css';
-import * as Swal from '../../api/alert';
 import { useNavigate } from 'react-router-dom';
+import * as Swal from '../../api/alert';
+import './MbtiTest.css';
+import { options, questionsMBTI } from "./TestForm";
 
 function Question({ question, options, onAnswer }) {
-    const [selectedOption, setSelectedOption] = useState('');
+    //const [selectedOption, setSelectedOption] = useState('');
 
-    const handleOptionClick = (option) => {
-        setSelectedOption(option);
-        onAnswer(option === "그렇다." ? question.YES : question.NO);
+    const handleNextQuestion = (option) => {
+        //그렇다를 누르면 Yes를 반환, 아니면 No를 반환 근데 Yes 처리가 안됨
+        if(option === '그렇다') {
+            onAnswer(question.YES);
+        } else onAnswer(question.No);
+
+        console.log(option === '그렇다')
+        console.log(options)
+        console.log(question.question)
+        console.log(question.YES)
+        console.log(question.No)
     };
+
+    // const handleOptionChange = (e) => {
+    //     setSelectedOption(e);
+    // }
 
     return (
         <div className='form'>
@@ -21,8 +33,10 @@ function Question({ question, options, onAnswer }) {
                         <button
                             type="button"
                             value={option}
-                            className={`input ${selectedOption === option ? 'selected' : ''}`}
-                            onClick={() => handleOptionClick(option)}
+                            onClick={() => {//handleOptionChange(option); 
+                                handleNextQuestion(option);}
+                            }
+                            className='input'
                         >
                             {option}
                         </button>
@@ -42,10 +56,10 @@ const MbtiTest = () => {
         setAnswers([...answers, answer]);
         console.log('answers', answers);
 
-        if (index < questionsMBTI.length - 1) {
+        if (index < questionsMBTI.length) {
             setIndex(index + 1);
         } else {
-            const mbtiType = calculateMBTIType([...answers, answer]);
+            const mbtiType = calculateMBTIType(answer);
             Swal.alert(`당신의 MBTI는 ${mbtiType} 입니다.`, "수고하셨습니다.", "success", () => { navigate("/") });
         }
     };

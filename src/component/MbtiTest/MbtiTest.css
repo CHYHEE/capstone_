@@ -33,6 +33,7 @@
     text-align: center;
     font-weight: bold;
     text-align: center;
+    border: none;
 }
 .input:active {
     background-color: #ED648B; /* 클릭했을 때 배경색 변경 */
