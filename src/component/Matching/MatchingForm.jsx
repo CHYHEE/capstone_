@@ -18,7 +18,7 @@ const MatchingForm = () => {
         <div>
             <span className="userid">
                 <IoPersonSharp style={{fontSize: '30px'}}/>
-                {userInfo.userName}님 환영합니다.
+                {userInfo.memberName}님 환영합니다.
             </span>
                 <img src="/img/matching.png" alt="matching" className="matchingimg"/>
                 <FadeLoader
@@ -42,7 +42,7 @@ const MatchingForm = () => {
                         사용자 정보
                     </label>
                     <label className="userinfoLabel">ID : {userInfo.userId}</label>
-                    <label className="userinfoLabel">이름 : {userInfo.userName}</label>
+                    <label className="userinfoLabel">이름 : {userInfo.memberName}</label>
                     <label className="userinfoLabel">생년월일 : {userInfo.userBirth}</label>
                     <label className="userinfoLabel">성별 : {userInfo.userGender}</label>
                     <label className="userinfoLabel">MBTI : {userInfo.userMbti}</label>

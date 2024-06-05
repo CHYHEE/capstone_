@@ -1,57 +1,68 @@
-/* MyPage.css */
-
-.my-page {
-    font-family: Arial, sans-serif;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.mypage-container {
+  border-radius: 10px;
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  border: 3px solid rgb(228, 116, 116);
+  width: 45%;
+  height: 80%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.header-title {
-    color: #333;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.profile {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+.mypageP {
+    font-size: 45px;
+    font-weight: bold;
+    position: absolute;
+    top: 5%;
+    left: 3%;
 }
 
 .profile-picture {
-    width: 100px; /* 이미지 너비 조정 */
-    height: 100px; /* 이미지 높이 조정 */
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 20px;
+    position: absolute;
+    top: 18%;
+    left: 4.5%;
+    width: 38%;
 }
 
-.profile-info {
-    color: #333;
+.camera{
+    position: absolute;
+    bottom: 12%;
+    left: 33%;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
 }
 
-.content {
-    text-align: center;
-    margin-bottom: 20px;
+.name-container {
+    display: flex;
+    gap: 20px;
 }
 
-.footer {
-    text-align: center;
+.name-container label{
     margin-top: 20px;
+    margin-left: 20px;
+    font-size: 30px;
+    font-weight: bold;
 }
 
-.footer-text {
-    color: #666;
+.name-container input {
+    width: 55%;
+    height: 65%;
+    margin-top: 17px;
+    border: 3px solid #ED648B;
+    border-radius: 20px;
+    font-size: 25px;
+}
+
+.mypagebutton {
+    width: 80px;
+    height: 45px;
+    font-size: 25px;
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+    padding: 0;
 }

@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
+import { TbCameraPlus } from "react-icons/tb";
 import { LoginContext } from '../../context/LoginContextProvider';
 import './MyPageForm.css';
 
@@ -15,7 +16,7 @@ const MyPageForm = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setUser({ ...user, [name]: value });
+        setUser({ ...user, [name]: e.target.value });
     };
 
     const handleSubmit = (e) => {
@@ -23,29 +24,59 @@ const MyPageForm = () => {
         console.log(user);
     };
 
+    const fileInputRef = useRef(null);
+
+    const handleButtonClick = () => {
+         fileInputRef.current.click();
+    };
+
+    const handleFileChange = (event) => {
+        const files = event.target.files;
+        // 파일 처리 로직을 여기에 작성
+        console.log(files);
+    };
+
     return (
-        <div className="mypage-container">
+        <div>
+            <p className='mypageP'>마이페이지</p>
             <form onSubmit={handleSubmit}>
             <img className="profile-picture" src="/img/프로필.webp" alt="Profile Picture" />
-                <label htmlFor="name">이름:</label>
-                <input type="text" id="name" name="name" value={user.name} onChange={handleChange} /><br/>
-
-                <label htmlFor="gender">성별:</label>
-                <input type="text" id="gender" name="gender" value={user.gender} onChange={handleChange} /><br/>
-
-                <label htmlFor="birthdate">생년월일:</label>
-                <input type="date" id="birthdate" name="birthdate" value={user.birthdate} onChange={handleChange} /><br/>
-
-                <label htmlFor="mbti">MBTI:</label>
-                <input type="text" id="mbti" name="mbti" value={user.mbti} onChange={handleChange} /><br/>
-
-                <label htmlFor="profilePictureUrl">프로필 사진 URL:</label>
-                <input type="text" id="profilePictureUrl" name="profilePictureUrl" value={user.profilePictureUrl} onChange={handleChange} /><br/>
-
-                <label htmlFor="bio">내 소개:</label>
-                <textarea id="bio" name="bio" value={user.bio} onChange={handleChange}></textarea><br/>
-
-                <button type="submit">저장</button>
+            <div>
+                <TbCameraPlus className='camera' onClick={handleButtonClick} style={{fontSize: '50px'}}/>
+                <input
+                    type="file"
+                    ref={fileInputRef}
+                    style={{ display: 'none' }}
+                    onChange={handleFileChange}
+                />
+            </div>
+            <div className="mypage-container">
+                <div className='name-container'>
+                    <label>이름:</label>
+                    <input type="text" id="name" name="name" value={userInfo.memberName} onChange={handleChange} /><br/>
+                </div>
+                <div className='name-container'>
+                    <label>성별:</label>
+                    <input type="text" id="gender" name="gender" value={userInfo.userGender} onChange={handleChange} /><br/>
+                </div>
+                <div className='name-container'>
+                    <label>생년월일:</label>
+                    <input type="date" id="birth" name="birth" value={userInfo.userBirth} onChange={handleChange} /><br/>
+                </div>
+                <div className='name-container'>
+                    <label>MBTI:</label>
+                    <input type="text" id="mbti" name="mbti" value={userInfo.userMbti} onChange={handleChange} /><br/>
+                </div>
+                <div className='name-container'>
+                    <label>전화번호:</label>
+                    <input type="text" id="phone" name="phone" value={userInfo.userPhone} onChange={handleChange} /><br/>
+                </div>
+                <div className='name-container'>
+                    <label>내 소개:</label>
+                    <input id="bio" name="bio" value={userInfo.bio} onChange={handleChange}/><br/>
+                </div>
+                <button className='mypagebutton' type="submit">저장</button>
+            </div>
             </form>
         </div>
     );

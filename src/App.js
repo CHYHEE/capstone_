@@ -1,15 +1,15 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import LoginContextProvider from "./context/LoginContextProvider";
 import Home from './page/Home';
-import Login from './page/Login';
-import Mypage from "./page/Mypage";
 import Introduction from "./page/Introduction";
+import Login from './page/Login';
 import Matching from "./page/Matching";
 import MbtiTestPage from "./page/MbtiTestPage";
+import Mypage from "./page/Mypage";
 
 const App = () => {
   return (
@@ -21,7 +21,6 @@ const App = () => {
             <Route path="/mypage" element={<Mypage/>}/>
             <Route path="/mbtitest" element={<MbtiTestPage/>}/>
             <Route path="/introduction" element={<Introduction/>}/>
-            {/* <Route path="/chat" element={<Chat/>}/> */}
             <Route path="/matching" element={<Matching/>}/>
           </Routes>
         </LoginContextProvider>

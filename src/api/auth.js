@@ -3,14 +3,16 @@ import api from "./api";
 
 // 로그인
 // export const login = (loginId, password) => api.post(`/login?username=${loginId}&password=${password}`, );
-export const auth_login = async (loginId, password, birth, gender, mbti) => {
+export const auth_login = async (loginId, password, memberName, birth, gender, mbti, phone) => {
     try {
         const response = await axios.post("http://127.0.0.1:8080/member/login", {
             loginId: loginId,
             password: password,
+            memberName: memberName,
             birth: birth,
             gender: gender,
-            mbti: mbti
+            mbti: mbti,
+            phone: phone
         });
 
         // 응답 상태 코드

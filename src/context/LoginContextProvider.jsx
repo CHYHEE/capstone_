@@ -17,9 +17,6 @@ export const LoginContextProvider = ({ children }) => {
   // 유저 정보
   const [userInfo, setUserInfo] = useState({});
 
-  // 아이디 저장
-  const [rememberUserId, setRememberUserId] = useState();
-
   /**
    * 💍✅ 로그인 체크
    */
@@ -60,22 +57,20 @@ export const LoginContextProvider = ({ children }) => {
   /**
    * 🔐 로그인
    */
-  const login = async (loginId, password, birth, gender, mbti) => {
-    console.log(`username : ${loginId}`);
+  const login = async (loginId, password,memberName, birth, gender, mbti, phone) => {
+    console.log(`loginId : ${loginId}`);
     console.log(`password : ${password}`);
-    console.log(`birth : ${birth}`);
-    console.log(`gender : ${gender}`);
-    console.log(`mbti : ${mbti}`);
 
     try {
-      const res = await auth.auth_login(loginId, password, birth, gender, mbti);
+      const res = await auth.auth_login(loginId, password,memberName, birth, gender, mbti, phone);
 
       //console.log(responseData);
 
   if (res.statusCode === 200) {
         // 로그인 체크 ➡ 로그인 세팅
         //loginCheck();
-        loginSetting({"loginId":loginId,"userName":res.responseData.memberName, "birth":res.responseData.birth, "gender":res.responseData.gender, "mbti":res.responseData.mbti});
+        loginSetting({"loginId":loginId,"memberName":res.responseData.memberName, "birth":res.responseData.birth, 
+        "gender":res.responseData.gender, "mbti":res.responseData.mbti, "phone":res.responseData.phone});
         // 페이지 이동 ➡ "/" (메인)
         // TODO : 메인 화면으로 꼭 이동할 필요가 있을까?
         Swal.alert('로그인 성공', '메인 화면으로 이동합니다.', 'success', () => {
@@ -117,22 +112,24 @@ export const LoginContextProvider = ({ children }) => {
   // 로그인 세팅
   const loginSetting = async (userData) => {
     const userId = userData.loginId;
-    const userName = userData.userName;
+    const memberName = userData.memberName;
     const userBirth = userData.birth;
     const userGender = userData.gender;
     const userMbti = userData.mbti;
+    const userPhone = userData.phone;
 
     console.log(`userId : ${userId}`);
-    console.log(`userName : ${userName}`);
+    console.log(`memberName : ${memberName}`);
     console.log(`userBirth : ${userBirth}`);
     console.log(`userGender : ${userGender}`);
     console.log(`userMbti : ${userMbti}`);
+    console.log(`userPhone : ${userPhone}`);
 
     // 로그인 여부
     setIsLogin(true);
 
     // 유저정보 세팅
-    const updateUserInfo = { userId, userName, userBirth, userGender, userMbti };
+    const updateUserInfo = { userId, memberName, userBirth, userGender, userMbti, userPhone };
     setUserInfo(updateUserInfo);
   };
 

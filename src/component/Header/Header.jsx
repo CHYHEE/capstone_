@@ -29,6 +29,7 @@ const Header = () =>{
                     <label onClick={() => navigate("/introduction")}>소개</label>
                     <label onClick={() => navigate("/mbtitest")}>MBTI 테스트</label>
                     <label onClick={() => navigate("/matching")}>매칭</label>
+                    <label onClick={() => navigate("/chat")}>채팅</label>
                 </div>
             </div>
             <div className='label-container'>
@@ -42,9 +43,9 @@ const Header = () =>{
                     ) : (
                         <>
                                 <label onClick={() => navigate('/mypage')}>                            
-                                {userInfo.userName}님
-                                    <BsPersonCircle style={{fontSize : '35px', marginLeft:'5px'}}/>
-                                    <FaSortDown style={{fontSize : '20px'}}/>  
+                                    {userInfo.memberName}님
+                                    <BsPersonCircle style={{fontSize : '35px', marginLeft:'5px', marginBottom:'8px'}}/>
+                                    <FaSortDown style={{fontSize : '20px', marginBottom:'10px'}}/>  
                                 </label>                          
                             <button onClick={() => logout()}>
                                 로그아웃
