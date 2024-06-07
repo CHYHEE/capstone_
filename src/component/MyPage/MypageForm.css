@@ -23,14 +23,14 @@
 .profile-picture {
     position: absolute;
     top: 18%;
-    left: 4.5%;
-    width: 38%;
+    left: 6%;
+    width: 35%;
 }
 
 .camera{
     position: absolute;
-    bottom: 12%;
-    left: 33%;
+    bottom: 18%;
+    left: 32%;
     width: 80px;
     height: 80px;
     cursor: pointer;
@@ -65,4 +65,56 @@
     bottom: 3%;
     right: 3%;
     padding: 0;
+}
+
+.modalbutton {
+    position: absolute;
+    bottom: 9%;
+    left: 13%;
+    width: 280px;
+    height: 60px;
+    padding: 0;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: white;
+    border: 3px solid #ED648B;
+    border-radius: 20px;
+    color: #ED648B;
+}
+
+.modal {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%; /* 모달의 너비를 70%로 변경합니다. */
+    height: 700px; /* 모달의 높이를 500px로 변경합니다. */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+}
+
+.modal-content {
+    width: 100%; /* 모달 내용의 너비를 100%로 설정합니다. */
+    height: 100%; /* 모달 내용의 높이를 100%로 설정합니다. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* 모달 내용을 수직 중앙 정렬합니다. */
+}
+
+.close{
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.capturedImage {
+    width: 640px;
+    height: 480px;
+    position: absolute;
+    top: 51.85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
