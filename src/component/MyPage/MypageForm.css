@@ -86,7 +86,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70%; /* 모달의 너비를 70%로 변경합니다. */
+    width: 50%; /* 모달의 너비를 70%로 변경합니다. */
     height: 700px; /* 모달의 높이를 500px로 변경합니다. */
     z-index: 9999;
     display: flex;

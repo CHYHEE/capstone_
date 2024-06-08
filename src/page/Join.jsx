@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
-import Header from '../component/Header/Header'
-import JoinForm from '../component/Join/JoinForm'
-import * as auth from '../api/auth';
-import * as Swal from '../api/alert';
-import { LoginContext } from '../context/LoginContextProvider';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as Swal from '../api/alert';
+import * as auth from '../api/auth';
+import Header from '../component/Header/Header';
+import JoinForm from '../component/Join/JoinForm';
+import { LoginContext } from '../context/LoginContextProvider';
 
 const Join = () => {
 
