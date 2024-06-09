@@ -1,21 +1,23 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { IoClose } from "react-icons/io5";
-import { TbCameraPlus } from "react-icons/tb";
 import { useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
 import * as Swal from '../../api/alert';
+import { CapturedImageContext } from '../../context/CapturedImageContext';
 import { LoginContext } from '../../context/LoginContextProvider';
 import './MyPageForm.css';
 
 const MyPageForm = () => {
     const [modalOpen, setModalOpen] = useState(false);
-    const [capturedImage, setCapturedImage] = useState(null);
+    //const [capturedImage, setCapturedImage] = useState(null);
     const [isVerified, setIsVerified] = useState(false);
-    const [selectedImage, setSelectedImage] = useState("/img/프로필.webp");
+    const [selectedImage, setSelectedImage] = useState("/img/profile.png");
+    const [image, setInternalImage] = useState(null);
     const webcamRef = useRef(null);
-    const fileInputRef = useRef(null);
+    //const fileInputRef = useRef(null);
     const navigate = useNavigate();
     const { userInfo } = useContext(LoginContext);
+    const { capturedImage, setCapturedImage } = useContext(CapturedImageContext);
     const [user, setUser] = useState({
         name: '',
         gender: '',
@@ -24,6 +26,13 @@ const MyPageForm = () => {
         phone: '',
         bio: ''
     });
+
+    // useEffect(() => {
+    //     const savedImage = localStorage.getItem('capturedImage');
+    //     if (savedImage) {
+    //         setCapturedImage(savedImage);
+    //     }
+    // }, []);
 
     useEffect(() => {
         const savedName = localStorage.getItem("name");
@@ -64,18 +73,18 @@ const MyPageForm = () => {
         
     };
 
-    const handleButtonClick = () => {
-        fileInputRef.current.click();
-    };
+    // const handleButtonClick = () => {
+    //     fileInputRef.current.click();
+    // };
 
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setSelectedImage(reader.result);
-        };
-        reader.readAsDataURL(file);
-    };
+    // const handleFileChange = (event) => {
+    //     const file = event.target.files[0];
+    //     const reader = new FileReader();
+    //     reader.onloadend = () => {
+    //         setSelectedImage(reader.result);
+    //     };
+    //     reader.readAsDataURL(file);
+    // };
 
     const handleOpenModal = () => {
         console.log('모달 열기');
@@ -106,18 +115,24 @@ const MyPageForm = () => {
     const capture = () => {
         const imageSrc = webcamRef.current.getScreenshot();
         setCapturedImage(imageSrc); // 캡처된 이미지 상태 업데이트
+        //setInternalImage(imageSrc);
         Swal.alert("프로필 인증 성공", "", "success", () => { 
             setModalOpen(false);
             navigate("/mypage");
         })
     };
 
+    // const storeCapturedImage = (image) => {
+    // setCapturedImage(image);
+    // localStorage.setItem('capturedImage', image);
+    // };
+
     return (
         <div>
             <p className='mypageP'>마이페이지</p>
             <form onSubmit={handleSubmit}>
-                <img className="profile-picture" src={selectedImage} alt="Profile Picture" style={{ width: '35%', height: '55%' }} />
-                <div>
+            <img className={capturedImage ? "captured-picture" : "selected-picture"} src={capturedImage || selectedImage} alt="Profile Picture"/>
+                {/* <div>
                     <TbCameraPlus className='camera' onClick={handleButtonClick} style={{fontSize: '50px'}}/>
                     <input
                         type="file"
@@ -125,7 +140,7 @@ const MyPageForm = () => {
                         style={{ display: 'none' }}
                         onChange={handleFileChange}
                     />
-                </div>
+                </div> */}
                 <div>
                     <button className='modalbutton' type="button" onClick={handleOpenModal} disabled={isVerified}>
                         {isVerified ? '프로필 인증 완료' : '프로필 인증하기'}
@@ -134,8 +149,8 @@ const MyPageForm = () => {
                         <div className="modal">
                             <div className="modal-content">
                                 <IoClose className="close" onClick={handleCloseModal}/>
-                                <p>프로필 인증을 시작합니다.</p>
-                                <button onClick={capture}>사진 찍기</button>
+                                <p className='profileP'>프로필 인증을 시작합니다.</p>
+                                <button className='profilebtn' onClick={capture}>사진 찍기</button>
                                 {capturedImage ? (
                                     <img
                                         className='capturedImage'
@@ -148,7 +163,7 @@ const MyPageForm = () => {
                                                         navigate("/mypage");
                                                         setIsVerified(true);
                                                     })
-                                                },1500);
+                                                },1000);
                                             }}
                                     />
                                 ) : (
@@ -165,6 +180,7 @@ const MyPageForm = () => {
                     )}
                 </div>
                 <div className="mypage-container">
+                    <p className='myP'>내 정보</p>
                     <div className='name-container'>
                         <label>이름:</label>
                         <input type="text" id="name" name="name" value={user.name} onChange={handleChange}/><br/>

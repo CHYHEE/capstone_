@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
+import { CapturedImageProvider } from './context/CapturedImageContext';
 import LoginContextProvider from "./context/LoginContextProvider";
 import Home from './page/Home';
 import Introduction from "./page/Introduction";
@@ -10,21 +11,23 @@ import Login from './page/Login';
 import Matched from "./page/Matched";
 import Matching from "./page/Matching";
 import MbtiTestPage from "./page/MbtiTestPage";
-import Mypage from "./page/Mypage";
+import MyPage from './page/MyPage';
 
 const App = () => {
   return (
       <BrowserRouter>                {/* URL 관리, 브라우저의 주소를 처리 */}
         <LoginContextProvider>       {/* 로그인 관리 */}
+          <CapturedImageProvider>
           <Routes>                   {/* 어떤 컴포넌트를 렌더링할지 결정하는 역할 */}
             <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/mypage" element={<Mypage/>}/>
+            <Route path="/mypage" element={<MyPage/>}/>
             <Route path="/mbtitest" element={<MbtiTestPage/>}/>
             <Route path="/introduction" element={<Introduction/>}/>
             <Route path="/matching" element={<Matching/>}/>
             <Route path="/matched" element={<Matched/>}/>
           </Routes>
+          </CapturedImageProvider>
         </LoginContextProvider>
       </BrowserRouter>
   );

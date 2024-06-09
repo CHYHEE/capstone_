@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
-import { IoPersonSharp } from "react-icons/io5";
+import { PiArrowsHorizontalBold } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { FadeLoader } from 'react-spinners';
 import { LoginContext } from '../../context/LoginContextProvider';
 import "./MatchingForm.css";
 
 
-const MatchingForm = () => {
+const MatchingForm = ({ capturedImage }) => {
     const { userInfo } = useContext(LoginContext);
+    //const {capturedImage} = useContext(CapturedImageContext);
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -16,17 +17,13 @@ const MatchingForm = () => {
 
     return (
         <div>
-            <span className="userid">
-                <IoPersonSharp style={{fontSize: '30px'}}/>
-                {userInfo.memberName}님 환영합니다.
-            </span>
-                <img src="/img/matching.png" alt="matching" className="matchingimg"/>
-                <FadeLoader
+            <div>
+            <FadeLoader
                     color="#ED648B"
                     cssOverride={{
                         position: 'absolute',
                         top: '9%',
-                        left: '60%'
+                        left: '8%'
                     }}
                     height={27}
                     loading
@@ -36,17 +33,12 @@ const MatchingForm = () => {
                 />
                 <p className="matchingimgP">매칭 중</p>
                 <button onClick={handleClick} className="matchingbtn">매칭취소</button>
-                <li className="userinfo">
-                    <label className="userinfoP">
-                        <IoPersonSharp style={{marginBottom:'6px'}}/>
-                        사용자 정보
-                    </label>
-                    <label className="userinfoLabel">ID : {userInfo.userId}</label>
-                    <label className="userinfoLabel">이름 : {userInfo.memberName}</label>
-                    <label className="userinfoLabel">생년월일 : {userInfo.userBirth}</label>
-                    <label className="userinfoLabel">성별 : {userInfo.userGender}</label>
-                    <label className="userinfoLabel">MBTI : {userInfo.userMbti}</label>
-                </li>
+            </div>
+            <img src={capturedImage || "/img/profile.jpg"} alt="프로필" className="matchingimg"/>
+            <div className="heart">
+                <PiArrowsHorizontalBold/>
+            </div>
+            <img src="/img/matching.png" alt="matching" className="matchingimg2"/>
         </div>
     )
 }

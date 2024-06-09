@@ -1,7 +1,7 @@
 .mypage-container {
   border-radius: 10px;
   position: absolute;
-  bottom: 10%;
+  bottom: 7%;
   right: 5%;
   border: 3px solid rgb(228, 116, 116);
   width: 45%;
@@ -18,13 +18,49 @@
     position: absolute;
     top: 5%;
     left: 3%;
+    color: #ED648B;
+    text-shadow: 2px 2px 2px #f4c2d0;
 }
 
-.profile-picture {
+.myP {
+    font-size: 35px;
+    font-weight: bold;
+    position: absolute;
+    top: -10%;
+    right: 78%;
+    color: black;
+}
+
+.selected-picture {
     position: absolute;
     top: 18%;
     left: 6%;
     width: 35%;
+}
+
+.captured-picture {
+    position: absolute;
+    top: 25%;
+    left: 5.5%;
+    width: 38%;
+}
+
+.profileP {
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 5%;
+    left: 27%;
+}
+
+.profilebtn {
+    position: absolute;
+    bottom: 5%;
+    right: 8%;
+    width: 150px;
+    height: 50px;
+    padding: 0;
+    font-size: 25px;
 }
 
 .camera{

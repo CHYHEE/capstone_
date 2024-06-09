@@ -306,4 +306,4 @@
             No: "P"
         }
     ]
-export {options, questionsMBTI}
+export { options, questionsMBTI };

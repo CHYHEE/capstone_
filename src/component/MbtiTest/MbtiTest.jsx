@@ -25,6 +25,8 @@ function Question({ question, options, onAnswer }) {
     // }
 
     return (
+        <div>
+        <p className="mbtiH">성격유형검사(MBTI Test)</p>
         <div className='form'>
             <h2 className='h2'>{question.question}</h2>
             <div>
@@ -43,6 +45,7 @@ function Question({ question, options, onAnswer }) {
                     </div>
                 ))}
             </div>
+        </div>
         </div>
     );
 }

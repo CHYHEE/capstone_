@@ -82,3 +82,13 @@
     transform: translate(-50%, -50%);
     margin-top: -40px;
 }
+
+.mbtiH {
+    font-size: 45px;
+    font-weight: bold;
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    color: #ED648B;
+    text-shadow: 2px 2px 2px #f4c2d0;
+}

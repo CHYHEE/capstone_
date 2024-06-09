@@ -1,9 +1,18 @@
 .matchingimg {
-    width: 47%;
-    height: 80%;
+  width: 35%;
+  height: 60%;
+  position: absolute;
+  top: 57%;
+  right: 43%;
+  transform: translate(-50%, -50%);
+}
+
+.matchingimg2 {
+    width: 37%;
+    height: 60%;
     position: absolute;
-    top: 55%;
-    left: 25%;
+    top: 57%;
+    right: -16%;
     transform: translate(-50%, -50%);
 }
 
@@ -11,18 +20,16 @@
     font-size: 80px;
     font-weight: bold;
     position: absolute;
-    top: 10%;
-    right: 2.5%;
-    transform: translate(-50%, -50%);
+    top: 9%;
+    left: 15%;
     color : #ED648B;
     text-shadow: 5px 5px 5px #f4c2d0;
 }
 
 .matchingbtn {
     position: absolute;
-    top: 15%;
-    right: 0.5%;
-    transform: translate(-50%, -50%);
+    top: 14%;
+    left: 36.5%;
     width: 95px;
     height: 30px;
     font-size: 18px;
@@ -39,6 +46,21 @@
 
 .matchingbtn:focus {
     outline: none;
+}
+
+.correction {
+  position: absolute;
+  top: 7%;
+  right: 32%;
+  width: 68px;
+  height: 32px;
+  font-size: 18px;
+  background-color: #fff;
+  color:#ED648B;
+  font-weight: bold;
+  border-radius: 15px;
+  border: #ED648B solid 2px;
+  padding: 0;
 }
 
 .userid {
@@ -82,4 +104,13 @@
     margin-left: 15px;
     font-size: 30px; /* 기본 폰트 크기 조정 */
     color: #333; /* 텍스트 색상 */
+  }
+
+  
+  .heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 200px;
   }
