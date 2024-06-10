@@ -34,8 +34,8 @@ const MatchingForm = ({ capturedImage }) => {
                 <p className="matchingimgP">매칭 중</p>
                 <button onClick={handleClick} className="matchingbtn">매칭취소</button>
             </div>
-            <img src={capturedImage || "/img/profile.jpg"} alt="프로필" className="matchingimg"/>
-            <div className="heart">
+            <img src={capturedImage || "/img/profile.png"} alt="프로필" className="matchingimg"/>
+            <div className="icon">
                 <PiArrowsHorizontalBold/>
             </div>
             <img src="/img/matching.png" alt="matching" className="matchingimg2"/>

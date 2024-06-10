@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { BsPersonCircle } from "react-icons/bs";
-import { FaSortDown } from "react-icons/fa6";
 import { Link, useNavigate } from 'react-router-dom';
 import * as Swal from '../../api/alert';
 import { LoginContext } from '../../context/LoginContextProvider';
@@ -38,14 +37,12 @@ const Header = () =>{
                     { !isLogin ? (        
                             <label onClick={handleClick}>
                                 <BsPersonCircle style={{fontSize : '35px', color:'black'}}/>
-                                <FaSortDown style={{fontSize : '20px', color:'black'}}/>
                             </label>
                     ) : (
                         <>
                                 <label onClick={() => navigate('/mypage')}>                            
                                     {userInfo.memberName}님
                                     <BsPersonCircle style={{fontSize : '35px', marginLeft:'5px', marginBottom:'8px'}}/>
-                                    <FaSortDown style={{fontSize : '20px', marginBottom:'10px'}}/>  
                                 </label>                          
                             <button onClick={() => logout()}>
                                 로그아웃
