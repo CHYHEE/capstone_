@@ -16,6 +16,7 @@
     "bootstrap": "^5.3.3",
     "dom-helpers": "^5.2.1",
     "express": "^4.19.2",
+    "firebase": "^10.12.2",
     "js-cookie": "^3.0.5",
     "mysql2": "^3.9.9",
     "opencv.js": "^1.2.1",

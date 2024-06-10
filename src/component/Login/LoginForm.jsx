@@ -1,12 +1,16 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
+import * as Swal from '../../api/alert';
+import { alert } from '../../api/alert';
+import { checkId, join } from "../../api/auth";
 import { LoginContext } from '../../context/LoginContextProvider';
-import './LoginForm.css';
 import Find from "../Find/Find";
-import {alert} from "../../api/alert";
-import {join, checkId} from "../../api/auth";
+import './LoginForm.css';
+
 
 const LoginForm = () => {
     const { login } = useContext(LoginContext);
+    const navigate = useNavigate();
     const [isSignUpActive, setIsSignUpActive] = useState(false);
     const [show, setShow] = useState(false);
 
@@ -31,17 +35,19 @@ const LoginForm = () => {
         const mbti = e.target.mbti.value
         const username = e.target.username.value
         const birth = e.target.date.value
-        const man = e.target.man.value
         const phone = e.target.phone.value
-        const gender = man == 1 ? "남" : "여";
-        const res = join(id, password, mbti, username, birth, gender, phone);
+        // const gender = man == 1 ? "남" : "여";
+        const res = join(id, password, mbti, username, birth, phone);
         if(res.statusCode == 200){
-            alert('회원가입 성공!');
+            Swal.alert('회원가입 성공!', '로그인 페이지로 이동합니다.', 'success', () => {
+                navigate('/login');
+                setIsSignUpActive(false);
+            });
         }
         else{
-            alert('회원가입 실패!');
+            Swal.alert('회원가입 실패!', '', 'warning');
         }
-        const user = { id, password, confirmPassword, mbti, username, birth, gender, phone };
+        //const user = { id, password, confirmPassword, mbti, username, birth, gender, phone };
         //login(user);
     }
 
@@ -62,7 +68,7 @@ const LoginForm = () => {
         const mbti = document.getElementById('mbti').value;
         const id = document.getElementById('id').value;
         const man = document.getElementById('man').value;
-        const gender = man==1 ? "남" : "여";
+        // const gender = man==1 ? "남" : "여";
         if (id === ''){
             alert('아이디를 입력해주세요.');
         } else if(password === '' || confirmPassword === ''){
@@ -77,16 +83,18 @@ const LoginForm = () => {
             alert('생년월일을 입력해주세요.');
         } else if(phone === ''){
             alert('휴대폰 번호를 입력해주세요.');
-        } else {
-            const res = await join(id, password, mbti, username, date, gender, phone);
+        }
+            
+        const res = await join(id, password, mbti, username, date, phone);
             if(res.statusCode == 200){
-                alert('회원가입 성공!');
+                Swal.alert('회원가입 성공!', '로그인 페이지로 이동합니다.', 'success', () => {
+                    navigate('/login');
+                    setIsSignUpActive(false);
+                });
             }
             else{
-                alert('회원가입 실패!');
+                Swal.alert('회원가입 실패!', '', 'warning');
             }
-        }
-
     }
 
     const checkDuplicate= async () => {
@@ -112,10 +120,14 @@ const LoginForm = () => {
 
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    }
+
     return (
         <div className={`container ${isSignUpActive ? 'right-panel-active' : ''}`} id="container">
             <div className="form-container sign-up-container">
-                <form action="" >
+                <form onSubmit={handleSubmit}>
                     <label style={{fontSize: "25px"}}>회원정보 입력</label>
                     <p style={{marginTop : '-3px'}}>회원 가입을 위해 필요한 정보를 입력해주세요.</p>
                     <label style={{marginRight: '330px'}}>필수 항목 ✔</label>
@@ -151,9 +163,9 @@ const LoginForm = () => {
                             </div>
                             <div className="radio-container">
                                 <label>성별</label>
-                                <input type="radio" id="man" name="drone" value="1"/> 남자
+                                <input type="radio" id="man"/> 남자
                                 <p className='label-input-container' style={{marginRight: '10px'}}></p>
-                                <input type="radio" id="woman" name="drone" value="2"/>여자
+                                <input type="radio" id="woman"/>여자
                             </div>
                             <div className='label-input-container'>
                                 <label>휴대폰 번호</label>
@@ -165,7 +177,7 @@ const LoginForm = () => {
                 </form>
             </div>
             <div className="form-container sign-in-container">
-                <form action="" onSubmit={(e) => onLogin(e)}>
+                <form>
                     <h1>Sign in</h1>
                     <span>or use your account</span>
                     <br/>

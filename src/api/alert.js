@@ -21,23 +21,23 @@ export const alert = (title, text, icon, callback) => {
   }
 
 // confirm
-export const confirm = (title, text, icon, callback) => {
-    MySwal.fire({
-        title: title,
-        text: text,
-        icon: icon,
-        showCancelButton: true,
-        cancelButtonColor: "#f4c2d0",
-        cancelButtonText: "No",
-        confirmButtonColor: "#ED648B",
-        confirmButtonText: "Yes",
-    })
-        .then((result) => {
-            if (result.isConfirmed) {
-                callback();
-            }
-        });
-}
+// export const confirm = (title, text, icon, callback) => {
+//     MySwal.fire({
+//         title: title,
+//         text: text,
+//         icon: icon,
+//         showCancelButton: true,
+//         cancelButtonColor: "#f4c2d0",
+//         cancelButtonText: "No",
+//         confirmButtonColor: "#ED648B",
+//         confirmButtonText: "Yes",
+//     })
+//         .then((result) => {
+//             if (result.isConfirmed) {
+//                 callback();
+//             }
+//         });
+// }
 
 export const confirms = (title, text, icon, callback) => {
     MySwal.fire({
@@ -51,4 +51,21 @@ export const confirms = (title, text, icon, callback) => {
         confirmButtonText: "Yes",
     })
         .then( callback )
+}
+
+export const fire = (title, text, icon, callback) => {
+    MySwal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        confirmButtonColor: "#ED648B",
+        cancelButtonText: 'No',
+        cancelButtonColor: "#f4c2d0",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            callback();
+        }
+    });
 }
