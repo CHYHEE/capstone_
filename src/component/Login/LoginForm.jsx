@@ -68,7 +68,7 @@ const LoginForm = () => {
         const mbti = document.getElementById('mbti').value;
         const id = document.getElementById('id').value;
         const man = document.getElementById('man').value;
-        // const gender = man==1 ? "남" : "여";
+        const gender = man==1 ? "남" : "여";
         if (id === ''){
             alert('아이디를 입력해주세요.');
         } else if(password === '' || confirmPassword === ''){
@@ -84,8 +84,7 @@ const LoginForm = () => {
         } else if(phone === ''){
             alert('휴대폰 번호를 입력해주세요.');
         }
-            
-        const res = await join(id, password, mbti, username, date, phone);
+        const res = await join(id, password, mbti, username, date, gender, phone);
             if(res.statusCode == 200){
                 Swal.alert('회원가입 성공!', '로그인 페이지로 이동합니다.', 'success', () => {
                     navigate('/login');

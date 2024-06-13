@@ -22,7 +22,7 @@ export const LoginContextProvider = ({ children }) => {
 
 
   /**
-   * 💍✅ 로그인 체크
+   * 💍✅ 로그인 체
    */
   const loginCheck = async (isAuthPage = false) => {
     let response;
@@ -56,6 +56,7 @@ export const LoginContextProvider = ({ children }) => {
     // ✅ 인증 성공
     // 정보 세팅
     loginSetting(data);
+    console.log(`로그인 응답 데이터 : ${data}`);
   };
 
   /**

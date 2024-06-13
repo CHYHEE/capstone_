@@ -44,13 +44,14 @@ export const auth_login = async (loginId, password, memberName, birth, gender, m
     }
 };
 // 사용자 정보
-export const info = async  (loginId, password, birth, gender, mbti) => {
+export const info = async  (loginId, password, birth, gender, mbti, phone) => {
     await api.post("/member/login", {
     "loginId":loginId,
     "password":password,
     "birth":birth,
     "gender":gender,
-    "mbti":mbti
+    "mbti":mbti,
+    "phone": phone
 }).then(response => {
     const statusCode = response.status;
 
@@ -100,6 +101,9 @@ export const checkId = async (loginId) => {
         return error.response;
     }
 };
+
+
+
 
 // 회원가입
 export const join = async (loginId, password, mbti, userName, birth, gender, phone) => {

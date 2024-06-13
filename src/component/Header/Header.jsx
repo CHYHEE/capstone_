@@ -19,8 +19,7 @@ const Header = () =>{
 
     const handleCheck = () => {
         Swal.confirms('매칭을 시작하시겠습니까?', '매칭 페이지로 이동합니다.', 'question', (result) => {
-            if (result.isConfirmed) {      
-
+            if (result.isConfirmed) {
                 navigate('/matching');
             }
         })
@@ -37,7 +36,11 @@ const Header = () =>{
                     <label onClick={() => navigate("/introduction")}>소개</label>
                     <label onClick={() => navigate("/mbtitest")}>MBTI 테스트</label>
                     <label onClick={handleCheck}>매칭</label>
-                    <label onClick={handleClick}>채팅</label>
+                    { !isLogin ? (
+                        <label onClick={handleClick}>채팅</label>
+                    ) : (
+                        <label onClick={() => navigate('/chat')}>채팅</label>
+                    )}
                 </div>
             </div>
             <div className='label-container'>

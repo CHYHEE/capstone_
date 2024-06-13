@@ -23,14 +23,14 @@ const MatchingForm = ({ capturedImage }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setTimeout(function(){
-                    console.log("매칭 중");
-                }, 30000);    
                 const res = await matching();
                 setLoading(false);
                 if (res) {
                     setMatchedUser(res);
-                    navigate("/matched", { state: res });
+                    setTimeout(()=>{
+                        console.log("매칭 중");
+                        navigate("/matched", { state: res });
+                    }, 4000);
                 } else {
                     console.error(`error : ${res.status}`);
                 }
@@ -42,8 +42,7 @@ const MatchingForm = ({ capturedImage }) => {
         };
 
         fetchData();
-    }, []); // Empty dependency array, runs only once on mount
-
+    }, []);
 
     return (
         <div>

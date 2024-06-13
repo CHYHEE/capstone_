@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "./MatchedForm.css";
 
 
-const MatchedForm = ({ capturedImage }) => {
+const MatchedForm = () => {
     const { state } = useLocation();
     //const { matchingInfo } = useContext(LoginContext);
     //const {capturedImage} = useContext(CapturedImageContext);
