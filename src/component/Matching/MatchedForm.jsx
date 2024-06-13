@@ -31,7 +31,7 @@ const MatchedForm = () => {
                 <button onClick={handleClick} className="clickbtn">수락</button>
                 <button onClick={handleCancel} className="cancelbtn">거절</button>
             </div>
-            <img src={state.profile_image?`data:image/jpeg;base64,${state.profile_image}`:capturedImage2} alt="Wmatched" className="matchedimg"/>
+            <img src={state.profile_image?`data:image/jpeg;base64,${state.profile_image}`:capturedImage2} alt="matched" className="matchedimg"/>
             <li className="info">
                 <label className="infoP">
                     <IoPersonSharp style={{marginBottom:'6px'}}/>

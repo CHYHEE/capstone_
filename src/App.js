@@ -5,6 +5,7 @@ import './App.css';
 
 import { CapturedImageProvider } from './context/CapturedImageContext';
 import LoginContextProvider from "./context/LoginContextProvider";
+import Chat from './page/Chat';
 import Home from './page/Home';
 import Introduction from "./page/Introduction";
 import Login from './page/Login';
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/introduction" element={<Introduction/>}/>
             <Route path="/matching" element={<Matching/>}/>
             <Route path="/matched" element={<Matched/>}/>
+            <Route path="/chat" element={<Chat/>}/>
           </Routes>
           </CapturedImageProvider>
         </LoginContextProvider>
