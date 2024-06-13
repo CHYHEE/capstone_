@@ -17,6 +17,10 @@ export const LoginContextProvider = ({ children }) => {
   // 유저 정보
   const [userInfo, setUserInfo] = useState({});
 
+  // 매칭 정보
+  const [matchingInfo, setMatchingInfo] = useState([]);
+
+
   /**
    * 💍✅ 로그인 체크
    */
@@ -66,7 +70,7 @@ export const LoginContextProvider = ({ children }) => {
 
       //console.log(responseData);
 
-  if (res.statusCode === 200) {
+      if (res.statusCode === 200) {
         // 로그인 체크 ➡ 로그인 세팅
         //loginCheck();
         loginSetting({"loginId":loginId,"memberName":res.responseData.memberName, "birth":res.responseData.birth, 
@@ -143,6 +147,37 @@ export const LoginContextProvider = ({ children }) => {
     // 🍪 쿠키 지우기
   };
 
+  const matching = async (memberName, birth, gender, mbti, img) => {
+    console.log(`memberName : ${memberName}`);
+    console.log(`birth : ${birth}`);
+    console.log(`gender : ${gender}`);
+    console.log(`mbti : ${mbti}`);
+    console.log(`img : ${img}`)
+
+    try {
+        const res = await auth.matching(memberName, birth, gender, mbti, img);
+
+        if(res.statusCode === 200) {
+            Swal.alert('매칭 성공', '매칭 페이지으로 이동합니다.', 'success', () => {
+                navigate('/matched');
+            });
+
+            const updataMatchingInfo = {
+              memberName: res.responseData.memberName, 
+              birth: res.responseData.birth, 
+              gender: res.responseData.gender, 
+              mbti: res.responseData.mbti,
+              img: res.responseData.img
+          }
+          setMatchingInfo(updataMatchingInfo);
+        }
+    }
+    catch (error) {
+        console.error(`error : ${error}`);
+        Swal.alert('매칭 실패', '다시 시도 해주세요.', 'error');
+    }
+}
+
   useEffect(() => {
     // 로그인 체크
     //loginCheck();
@@ -150,7 +185,7 @@ export const LoginContextProvider = ({ children }) => {
 
   return (
     <div>
-    <LoginContext.Provider value={{ isLogin, userInfo, loginCheck, login, logout }}>
+    <LoginContext.Provider value={{ isLogin, userInfo, loginCheck, login, logout, matchingInfo, matching }}>
       {children}
     </LoginContext.Provider>
     </div>

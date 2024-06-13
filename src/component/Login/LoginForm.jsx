@@ -127,7 +127,7 @@ const LoginForm = () => {
     return (
         <div className={`container ${isSignUpActive ? 'right-panel-active' : ''}`} id="container">
             <div className="form-container sign-up-container">
-                <form onSubmit={handleSubmit}>
+                <form action="" onSubmit={handleSubmit}>
                     <label style={{fontSize: "25px"}}>회원정보 입력</label>
                     <p style={{marginTop : '-3px'}}>회원 가입을 위해 필요한 정보를 입력해주세요.</p>
                     <label style={{marginRight: '330px'}}>필수 항목 ✔</label>
@@ -177,7 +177,7 @@ const LoginForm = () => {
                 </form>
             </div>
             <div className="form-container sign-in-container">
-                <form>
+                <form action="" onSubmit={(e) => onLogin(e)}>
                     <h1>Sign in</h1>
                     <span>or use your account</span>
                     <br/>

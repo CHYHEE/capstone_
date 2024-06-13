@@ -2,7 +2,7 @@
     width: 38%;
     height: 60%;
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 1%;
 }
   
@@ -74,13 +74,13 @@
     border-radius: 10px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
     position: absolute;
-    bottom: 13%;
+    bottom: 22%;
     left: 37%;
     border: 3px solid rgb(228, 116, 116);
     font-size: 20px;
     font-weight: bold;
     width: 33%;
-    height: 65%;
+    height: 47%;
     display: flex;
     flex-direction: column; /* 자식 요소들을 세로로 배치 */
     justify-content: flex-start; /* 자식 요소들을 위쪽에 배치 */

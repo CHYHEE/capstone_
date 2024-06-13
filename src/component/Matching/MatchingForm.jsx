@@ -1,19 +1,49 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PiArrowsHorizontalBold } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { FadeLoader } from 'react-spinners';
+import { matching } from "../../api/matching";
 import { LoginContext } from '../../context/LoginContextProvider';
 import "./MatchingForm.css";
 
 
 const MatchingForm = ({ capturedImage }) => {
     const { userInfo } = useContext(LoginContext);
+    const [capturedImage2, setCapturedImage2] = useState("/img/profile.png");
+    const [matchedUser, setMatchedUser] = useState(null);
+    const [loading, setLoading] = useState(false);
+
     //const {capturedImage} = useContext(CapturedImageContext);
     const navigate = useNavigate();
 
     const handleClick = () => {
         navigate("/");
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setTimeout(function(){
+                    console.log("매칭 중");
+                }, 30000);    
+                const res = await matching();
+                setLoading(false);
+                if (res) {
+                    setMatchedUser(res);
+                    navigate("/matched", { state: res });
+                } else {
+                    console.error(`error : ${res.status}`);
+                }
+            } catch (error) {
+                console.error(`error : ${error}`);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []); // Empty dependency array, runs only once on mount
+
 
     return (
         <div>
@@ -26,7 +56,7 @@ const MatchingForm = ({ capturedImage }) => {
                         left: '8%'
                     }}
                     height={27}
-                    loading
+                    loading 
                     margin={12}
                     radius={3}
                     width={9}
@@ -34,7 +64,7 @@ const MatchingForm = ({ capturedImage }) => {
                 <p className="matchingimgP">매칭 중</p>
                 <button onClick={handleClick} className="matchingbtn">매칭취소</button>
             </div>
-            <img src={capturedImage || "/img/profile.png"} alt="프로필" className="matchingimg"/>
+            <img src={capturedImage || capturedImage2} alt="프로필" className="matchingimg"/>
             <div className="icon">
                 <PiArrowsHorizontalBold/>
             </div>

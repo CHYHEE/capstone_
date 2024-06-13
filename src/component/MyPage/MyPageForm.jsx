@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { IoClose } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +13,7 @@ const MyPageForm = () => {
     //const [capturedImage, setCapturedImage] = useState(null);
     const [isVerified, setIsVerified] = useState(false);
     const [selectedImage, setSelectedImage] = useState("/img/profile.png");
-    const [image, setInternalImage] = useState(null);
+    //const [image, setInternalImage] = useState(null);
     const webcamRef = useRef(null);
     //const fileInputRef = useRef(null);
     const navigate = useNavigate();
@@ -114,8 +115,23 @@ const MyPageForm = () => {
 
     const capture = () => {
         const imageSrc = webcamRef.current.getScreenshot();
+        //base64로 변환
+        const base64 = imageSrc.split(',')[1];
+        //변환된 base64를 서버로 전송
+        console.log(base64);
+        axios.post('http://127.0.0.1:8080/member/upload', {
+            image: base64
+        },{withCredentials: true})
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
         setCapturedImage(imageSrc); // 캡처된 이미지 상태 업데이트
         //setInternalImage(imageSrc);
+
         Swal.alert("프로필 인증 성공", "", "success", () => { 
             setModalOpen(false);
             navigate("/mypage");

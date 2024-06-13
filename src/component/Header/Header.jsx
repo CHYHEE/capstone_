@@ -5,7 +5,6 @@ import * as Swal from '../../api/alert';
 import { LoginContext } from '../../context/LoginContextProvider';
 import './Header.css';
 
-
 const Header = () =>{
 
     // ✅ isLogin   : 로그인 여부 - Y(true), N(false)
