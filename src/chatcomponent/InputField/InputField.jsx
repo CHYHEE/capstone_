@@ -14,6 +14,7 @@ const InputField = ({message,setMessage,sendMessage}) => {
                     onChange={(event) => setMessage(event.target.value)}
                     multiline={false}
                     rows={1}
+                    className="chat_input"
                 />
 
                 <Button

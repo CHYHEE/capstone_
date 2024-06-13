@@ -102,9 +102,10 @@ input {
 
 .form-container {
     position: absolute;
-    top: 0;
-    height: 100%;
+    top: 35%;
+    height: 30%;
     transition: all 0.6s ease-in-out;
+    background-color: #fff;
 }
 
 .sign-in-container {
@@ -318,4 +319,5 @@ footer a {
     border-radius: 5px; /* fieldset 모서리를 둥글게 만듦 */
     padding: 20px; /* 안쪽 여백 추가 */
     width: 430px;
+    background-color: #fff;
 }
