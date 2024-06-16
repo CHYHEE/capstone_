@@ -45,7 +45,7 @@ export const auth_login = async (loginId, password, memberName, birth, gender, m
 };
 // 사용자 정보
 export const info = async  (loginId, password, birth, gender, mbti, phone) => {
-    await api.post("/member/login", {
+    await api.post("/member/info", {
     "loginId":loginId,
     "password":password,
     "birth":birth,
@@ -103,8 +103,6 @@ export const checkId = async (loginId) => {
 };
 
 
-
-
 // 회원가입
 export const join = async (loginId, password, mbti, userName, birth, gender, phone) => {
     try {
@@ -138,6 +136,8 @@ export const join = async (loginId, password, mbti, userName, birth, gender, pho
         throw error;
     }
 };
+
+
 
 //api.post(`/login?username=${loginId}&password=${password}`, )
 // return api.get(`/users/id?userName=${userName}&email=${email}`)
@@ -204,7 +204,30 @@ export const matching = async (memberName, birth, gender, mbti) => {
 
 //
 // 회원정보 수정
-//export const update = (data) => api.put("/users", data)
+export const updateInfo = async (loginId, mbti, userName, birth, gender, phone) => {
+    try {
+        const response = await axios.put("http://127.0.0.1:8080/member/updateInfo", {
+            loginId: loginId,
+            mbti: mbti,
+            memberName: userName,
+            birth: birth,
+            gender: gender,
+            phone: phone
+        });
+
+        const statusCode = response.status;
+        console.log('Response Status Code:', statusCode);
+
+        const responseData = response.data;
+        console.log('Server Response Data:', responseData);
+
+        return { statusCode, responseData };
+    } catch (error) {
+        console.error('Error during login request:', error);
+        throw error;
+    }
+}
+
 
 
 // 회원탈퇴

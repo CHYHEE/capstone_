@@ -71,8 +71,20 @@ const MyPageForm = () => {
         localStorage.setItem("phone", user.phone);
         localStorage.setItem("bio", user.bio);
         // 저장 완료 메시지를 표시하고 마이페이지로 이동합니다.
-        
     };
+
+    //-------------------
+    // const handleSubmit2 = async() => {
+    //     const res = await updateInfo(loginId, mbti, userName, birth, gender, phone);
+    //         if(res.statusCode == 200){
+    //             Swal.alert('저장 성공!', '홈 페이지로 이동합니다.', 'success', () => {
+    //                 navigate('/');
+    //             });
+    //         }
+    //         else{
+    //             Swal.alert('저장 실패!', '', 'warning');
+    //         }
+    // }
 
     // const handleButtonClick = () => {
     //     fileInputRef.current.click();
